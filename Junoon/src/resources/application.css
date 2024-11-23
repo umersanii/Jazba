@@ -1,0 +1,54 @@
+/* Background color for all pages */
+.background {
+    -fx-background-color: #212121;
+}
+
+/* Title label styling */
+.title-label {
+    -fx-font-size: 40px;
+    -fx-text-fill: white;
+}
+
+/* Profile section title styling */
+.profile-title {
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+}
+
+/* General styling for input fields (TextField) */
+.input-field {
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #BDC3C7;
+    -fx-background-radius: 20px;
+    -fx-pref-width: 300px;
+}
+
+/* Styling for buttons */
+.submit-button {
+    -fx-background-color: #1ABC9C;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-background-radius: 30px;
+    -fx-padding: 10 20 10 20;
+    -fx-font-weight: bold;
+}
+
+.back-button {
+    -fx-background-color: #E74C3C;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-background-radius: 30px;
+    -fx-padding: 10 20 10 20;
+    -fx-font-weight: bold;
+}
+
+/* General button styling (for consistency with Login screen) */
+.button {
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-background-radius: 30px;
+    -fx-padding: 10 20 10 20;
+    -fx-font-weight: bold;
+}
