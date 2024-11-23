@@ -1,0 +1,113 @@
+/* General Styles */
+* {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* Background and Container Styles */
+#root {
+    -fx-background-color: #212121;
+    background-color: #212121;
+}
+
+/* HBox and VBox for layout */
+.hbox, .vbox {
+    -fx-background-color: #212121;
+    -fx-background-radius: 20;
+    -fx-padding: 10;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #212121;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-min-width: 130px;
+    -fx-max-height: 40px;
+}
+
+/* Hover Effects for Buttons */
+.button:hover {
+    -fx-background-color: #333333;
+}
+
+/* Labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+/* Header Styles */
+#header {
+    -fx-background-color: black;
+    -fx-padding: 10;
+    -fx-alignment: center-left;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: #212121;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+}
+
+/* LineChart */
+.line-chart {
+    -fx-background-color: #333333;
+    -fx-background-radius: 10;
+}
+
+/* Specific Styling for Icons (Images) */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+
+/* Specific Styling for Labels (e.g., notifications) */
+#notificationBell {
+    -fx-font-size: 30px;
+    -fx-text-fill: #212121;
+}
+
+/* Header Container */
+#headerContainer {
+    -fx-background-color: black;
+    -fx-padding: 10;
+    -fx-spacing: 20;
+}
+
+/* Styling for Graphs and Charts */
+.chart {
+    -fx-background-color: #212121;
+    -fx-text-fill: white;
+}
+
+/* Buttons inside the LineChart section */
+.line-chart .button {
+    -fx-background-color: #212121;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+/* Custom Style for HBox */
+.hbox .label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Style for Left Section (Image/Logo) */
+.left-section {
+    -fx-background-color: #212121;
+    -fx-alignment: CENTER;
+    -fx-padding: 20px;
+}
+
+/* Style for the Form on the Right */
+.right-section {
+    -fx-background-color: #212121;
+    -fx-alignment: CENTER;
+    -fx-spacing: 20px;
+}
