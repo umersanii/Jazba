@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -81,6 +82,10 @@ public class CreateWorkoutController {
         private final Text exerciseName = new Text();
         private final Text targetMuscles = new Text();
         private final Text description = new Text();
+        private final TextField setsField = new TextField();
+        private final TextField repsField = new TextField();
+        private final TextField weightField = new TextField();
+        private final Button removeButton = new Button("Remove");
 
         public ExerciseCardCell() {
             super();
@@ -92,11 +97,23 @@ public class CreateWorkoutController {
             imageView.setFitHeight(50);
             imageView.setFitWidth(50);
 
+            // Configure TextFields
+            setsField.setPromptText("Sets");
+            repsField.setPromptText("Reps");
+            weightField.setPromptText("Weight");
+
             // Configure VBox
-            vbox.getChildren().addAll(exerciseName, targetMuscles, description);
+            vbox.getChildren().addAll(exerciseName, targetMuscles, description, setsField, repsField, weightField);
 
             // Add components to HBox
-            hbox.getChildren().addAll(imageView, vbox);
+            hbox.getChildren().addAll(imageView, vbox, removeButton);
+
+            // Remove button action
+            removeButton.setOnAction(event -> {
+                if (getListView() != null) {
+                    getListView().getItems().remove(getItem());
+                }
+            });
         }
 
         @Override
@@ -113,7 +130,6 @@ public class CreateWorkoutController {
 
                 // Set a placeholder image
                 Image placeholderImage = new Image("file:/Y:/Season%205/SDA/Jazba/jazba/target/classes/jazba/dumbbell.png");
-               ;
                 imageView.setImage(placeholderImage);
 
                 setGraphic(hbox);
