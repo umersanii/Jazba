@@ -13,16 +13,16 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth"-Infinity" onMouseDragEntered="#addHoverEffect" onMouseDragExited="#addHoverEffect" prefHeight="689.0" prefWidth="1308.0" style="-fx-background-color: #212121;" stylesheets="@app;/application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragEntered="#addHoverEffect" onMouseDragExited="#addHoverEffect" prefHeight="689.0" prefWidth="1308.0" style="-fx-background-color: #212121;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.MainSceneController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;" stylesheets="@resources/style.css">
+      <HBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;" stylesheets="@style.css">
          <children>
             <Label alignment="CENTER" prefHeight="130.0" prefWidth="108.0" style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-family: Sans-serif;" text="Jazba" />
             <VBox alignment="CENTER" prefHeight="106.0" prefWidth="71.0" style="-fx-background-color: white;">
                <children>
                   <ImageView fitHeight="91.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Downloads/bull-side-view-black-animal-shape.png" />
+                        <Image url="@dumbbell.png" />
                      </image>
                   </ImageView>
                </children>
@@ -41,7 +41,7 @@
       <!-- Workout Buttons -->
       <VBox alignment="CENTER" layoutX="69.0" layoutY="214.0" prefHeight="174.0" prefWidth="298.0" style="-fx-background-color: black; -fx-background-radius: 20;">
          <children>
-            <Button fx:id="CreateWorkoutButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Create Workout" />
+            <Button fx:id="CreateWorkoutButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Create Workout" onAction="#handleCreateWorkout"/>
          </children>
       </VBox>
       <VBox alignment="CENTER" layoutX="69.0" layoutY="417.0" prefHeight="174.0" prefWidth="298.0" style="-fx-background-color: black; -fx-background-radius: 20;">
@@ -79,12 +79,12 @@
       <Label layoutX="953.0" layoutY="606.0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px;" text="View Stats" textAlignment="CENTER" />
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="619.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Downloads/medal.png" />
+            <Image url="@resources/medal.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="53.0" fitWidth="40.0" layoutX="1056.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Downloads/bar-chart.png" />
+            <Image url="@resources/bar-chart.png" />
          </image>
       </ImageView>
    </children>

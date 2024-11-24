@@ -55,6 +55,9 @@ public class LoginController {
         boolean isValidUser = loginDAO.validateUser(username, password);
         if (isValidUser) {
             showAlert("Success", "Login successful!");
+            System.out.println("Navigating to the User Menu page...");
+            // Add scene-switching logic here if needed
+            SceneManager.switchScene("MainScene.fxml"); // Adjust to your actual user menu FXML file name
             // Proceed with next steps, like navigating to the user menu
         } else {
             showAlert("Error", "Invalid username or password!");

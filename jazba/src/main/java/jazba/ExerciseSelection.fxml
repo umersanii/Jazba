@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1369.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.ExerciseSelectionController">
+   <children>
+      <!-- Scrollable List of Exercises -->
+      <VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-padding: 20;" prefWidth="1369.0">
+         <children>
+            <Label text="Select an Exercise" style="-fx-font-size: 24px; -fx-text-fill: white;"/>
+            <ScrollPane fitToWidth="true" prefHeight="500.0" prefWidth="800.0">
+               <VBox fx:id="exerciseBox" spacing="10.0" style="-fx-background-color: #212121; -fx-padding: 10;">
+                  <!-- Placeholder for dynamically added exercise buttons -->
+               </VBox>
+            </ScrollPane>
+            <Button fx:id="backButton" text="Back" style="-fx-background-color: #FF0000; -fx-font-size: 16px; -fx-text-fill: white;"/>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
