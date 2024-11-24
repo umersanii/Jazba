@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
@@ -25,11 +26,24 @@ public class CreateWorkoutController {
     private Button addExerciseButton;
 
     @FXML
-    private ListView<Exercise> exerciseList; // Use a custom Exercise class for list items
+    private ListView<Exercise> exerciseList;
 
     @FXML
-    public void onAddExerciseClicked(MouseEvent event) {
+    private TextField workoutNameField; // Field for workout preset name
+
+    private ExerciseDAO exerciseDAO = new ExerciseDAO();  // Instantiate ExerciseDAO
+
+    @FXML
+    public void onAddExerciseClicked(ActionEvent event) {  // Changed to ActionEvent
         openExerciseSelectionPage();
+    }
+
+    @FXML
+    private Button saveWorkoutPresetButton;
+
+    @FXML
+    public void onSaveWorkoutPresetClicked(ActionEvent event) {  // Changed to ActionEvent
+        saveWorkoutPreset();
     }
 
     @FXML
@@ -37,13 +51,59 @@ public class CreateWorkoutController {
         // Ensure the ListView uses the custom cell factory
         exerciseList.setCellFactory(listView -> new ExerciseCardCell());
 
-        // Add a sample exercise to demonstrate the card format
-        exerciseList.getItems().add(new Exercise("Sample Exercise", "Sample Muscles", "Sample Description", null, 0, null, 0, 0, 0));
-
-        System.out.println(getClass().getResource("dumbbell.png"));
-
         // Action for the "Add Exercise" button
         addExerciseButton.setOnAction(event -> openExerciseSelectionPage());
+    }
+
+    private void saveWorkoutPreset() {
+        String workoutName = workoutNameField.getText();  // Get the name of the workout preset
+
+        if (workoutName.isEmpty()) {
+            showError("Error", "Please enter a name for the workout preset.");
+            return;  // Return early to prevent saving
+        }
+
+        // Check if the exercise list is empty
+        if (exerciseList.getItems().isEmpty()) {
+            showError("Error", "No exercises in the workout preset. Please add exercises before saving.");
+            return;  // Return early to prevent saving
+        }
+
+        // Assuming you have a method to get the logged-in memberID
+         // Get logged-in user's memberID
+
+        // Iterate through the exercises and check if all input fields are filled
+        for (Exercise exercise : exerciseList.getItems()) {
+            int sets = exercise.getSets();
+            int reps = exercise.getReps();
+            double weight = exercise.getWeight();
+
+            // Check if any of the fields are invalid (e.g., zero or negative values)
+            if (sets == 0 || reps == 0 || weight == 0) {
+                showError("Error", "Please fill in all fields for each exercise before saving.");
+                return;  // Return early to prevent saving
+            }
+
+            String exerciseName = exercise.getName();
+            String targetMuscles = exercise.getTargetMuscles();
+            String description = exercise.getDescription();
+
+            // Call ExerciseDAO to save this data into the workout_preset table
+            boolean success = exerciseDAO.saveWorkoutPreset(workoutName, exerciseName, targetMuscles, description, sets, reps, weight);
+
+            if (success) {
+                showInfo("Success", "Workout preset saved successfully!");
+            } else {
+                showError("Error", "Failed to save the workout preset.");
+            }
+        }
+    }
+
+    private void showInfo(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void openExerciseSelectionPage() {
@@ -73,6 +133,8 @@ public class CreateWorkoutController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    // Mock method to get the logged-in user ID, replace with your actual method
 
     // Custom cell factory for the exercise list
     private static class ExerciseCardCell extends ListCell<Exercise> {
@@ -131,6 +193,31 @@ public class CreateWorkoutController {
                 // Set a placeholder image
                 Image placeholderImage = new Image("file:/Y:/Season%205/SDA/Jazba/jazba/target/classes/jazba/dumbbell.png");
                 imageView.setImage(placeholderImage);
+
+                // Add change listeners to TextFields to update the Exercise object
+                setsField.textProperty().addListener((observable, oldValue, newValue) -> {
+                    try {
+                        exercise.setSets(Integer.parseInt(newValue));
+                    } catch (NumberFormatException e) {
+                        exercise.setSets(0);  // Default to 0 if input is invalid
+                    }
+                });
+
+                repsField.textProperty().addListener((observable, oldValue, newValue) -> {
+                    try {
+                        exercise.setReps(Integer.parseInt(newValue));
+                    } catch (NumberFormatException e) {
+                        exercise.setReps(0);  // Default to 0 if input is invalid
+                    }
+                });
+
+                weightField.textProperty().addListener((observable, oldValue, newValue) -> {
+                    try {
+                        exercise.setWeight(Double.parseDouble(newValue));
+                    } catch (NumberFormatException e) {
+                        exercise.setWeight(0);  // Default to 0 if input is invalid
+                    }
+                });
 
                 setGraphic(hbox);
             }

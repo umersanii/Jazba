@@ -26,6 +26,7 @@ public class Exercise {
         this.weight = weight;
     }
 
+    
     // Getter and Setter methods
     public String getName() {
         return name;
