@@ -56,6 +56,9 @@ public class LoginController {
         if (isValidUser) {
             showAlert("Success", "Login successful!");
             System.out.println("Navigating to the User Menu page...");
+            // Assuming you have the user ID after login validation
+            UserSession.setLoggedInUserID(username);
+
             // Add scene-switching logic here if needed
             SceneManager.switchScene("MainScene.fxml"); // Adjust to your actual user menu FXML file name
             // Proceed with next steps, like navigating to the user menu
