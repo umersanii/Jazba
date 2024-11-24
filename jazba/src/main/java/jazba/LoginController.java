@@ -22,20 +22,30 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
-    private LoginDAO loginDAO;
-
-
+    
     @FXML
     public void addHoverEffect(MouseEvent event) {
         // Add your hover effect logic here
         System.out.println("Hover effect triggered");
     }
+    
 
+    @FXML
+    public void showUserMenu(MouseEvent event) {
+        System.out.println("User menu clicked!");
+        // Logic for displaying the user menu
+    }
+    
+    @FXML
+    public void showNotifications(MouseEvent event) {
+        // Your logic for showing notifications
+        System.out.println("Notifications clicked!");
+    }
+    
 
     @FXML
     public void initialize() {
         System.out.println("Initialize method called");
-        loginDAO = new LoginDAO();  // Instantiate the DAO class
         loginButton.setOnAction(event -> handleLogin());
         registerButton.setOnAction(event -> handleRegister());
     }
@@ -51,17 +61,9 @@ public class LoginController {
             return;
         }
 
-        // Use LoginDAO to validate the user
-        boolean isValidUser = loginDAO.validateUser(username, password);
-        if (isValidUser) {
+        // Example Login Logic (replace with actual validation logic, e.g., database check)
+        if (username.equals("testuser") && password.equals("password")) {
             showAlert("Success", "Login successful!");
-            System.out.println("Navigating to the User Menu page...");
-            // Assuming you have the user ID after login validation
-            UserSession.setLoggedInUserID(username);
-
-            // Add scene-switching logic here if needed
-            SceneManager.switchScene("MainScene.fxml"); // Adjust to your actual user menu FXML file name
-            // Proceed with next steps, like navigating to the user menu
         } else {
             showAlert("Error", "Invalid username or password!");
         }
@@ -83,6 +85,3 @@ public class LoginController {
     }
 }
 
-
-
-    

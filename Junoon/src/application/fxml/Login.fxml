@@ -5,20 +5,28 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="1308.0" style="-fx-background-color: #212121;" stylesheets="@/resources/application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="833.0" style="-fx-background-color: #212121;" stylesheets="@/resources/application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.LoginController">
    <children>
-      <Label layoutX="150" layoutY="50" text="Login" textFill="white">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="50" layoutY="120" text="Username" textFill="white" />
-      <TextField fx:id="usernameField" layoutX="150" layoutY="115" prefWidth="200" />
-      <Label layoutX="50" layoutY="170" text="Password" textFill="white" />
-      <PasswordField fx:id="passwordField" layoutX="150" layoutY="165" prefWidth="200" />
-      <Button fx:id="loginButton" layoutX="150" layoutY="230" mnemonicParsing="false" prefWidth="200" text="Login" />
-      <Button fx:id="registerButton" layoutX="150" layoutY="280" mnemonicParsing="false" prefWidth="200" text="Register" />
+      <Label layoutX="255.0" layoutY="224.0" text="Username" textFill="white" />
+      <TextField fx:id="usernameField" layoutX="355.0" layoutY="219.0" prefWidth="200" />
+      <Label layoutX="255.0" layoutY="274.0" text="Password" textFill="white" />
+      <PasswordField fx:id="passwordField" layoutX="355.0" layoutY="269.0" prefWidth="200" />
+      <Button fx:id="loginButton" layoutX="355.0" layoutY="334.0" mnemonicParsing="false" prefWidth="200" text="Login" />
+      <Button fx:id="registerButton" layoutX="355.0" layoutY="384.0" mnemonicParsing="false" prefWidth="200" text="Register" />
+      <HBox alignment="CENTER_LEFT" prefHeight="148.0" prefWidth="833.0" style="-fx-background-color: black;">
+         <children>
+            <Label alignment="CENTER" prefHeight="148.0" prefWidth="153.0" style="-fx-text-fill: white; -fx-font-size: 30px; -fx-font-weight: bold;" text="Jazba" />
+            <Region prefHeight="148.0" prefWidth="178.0" />
+            <Label prefHeight="144.0" prefWidth="156.0" style="-fx-font-weight: bold; -fx-font-size: 50px;" text="Login" textFill="white">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

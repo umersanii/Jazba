@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="625.0" prefWidth="959.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.AdminBroadcastController">
+    <children>
+        <!-- Main Background Pane -->
+        <VBox layoutX="63.333333333333336" layoutY="97.33333333333333" prefHeight="466.0" prefWidth="827.0" spacing="15" style="-fx-background-color: #212121;" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="97.0">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            
+            <!-- Title -->
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="Admin Broadcast Center" />
+
+            <!-- Instruction Label -->
+            <Label style="-fx-text-fill: white;" text="Write your message below to broadcast to all users:" />
+
+            <!-- Message Input Section -->
+            <TextArea fx:id="messageArea" prefHeight="100" promptText="Type your message here..." wrapText="true" />
+
+            <!-- Button Section -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button fx:id="sendButton" onAction="#broadcastMessage" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Send Message" />
+                <Button fx:id="clearButton" onAction="#clearMessage" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Clear" />
+            </HBox>
+
+            <!-- Status Label -->
+            <Label fx:id="statusLabel" style="-fx-text-fill: #666666; -fx-font-size: 12px;" text="Status: Waiting for input..." />
+
+            <!-- Divider -->
+            <Separator />
+
+            <!-- Previous Broadcasts Section -->
+            <VBox spacing="10">
+                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;" text="Previous Broadcasts:" />
+                <ListView fx:id="broadcastListView" prefHeight="150" />
+            </VBox>
+        </VBox>
+    </children>
+</AnchorPane>

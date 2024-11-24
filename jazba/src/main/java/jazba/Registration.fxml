@@ -4,51 +4,69 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Pos?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="1308.0" style="-fx-background-color: #212121;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" styleClass="background" stylesheets="@registration.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.RegistrationController">
    <children>
-      <!-- Title -->
-      <Label layoutX="150" layoutY="50" text="Register" textFill="white">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
+      <!-- Main container: VBox for centering everything vertically and horizontally -->
+      <VBox alignment="CENTER" spacing="20.0" layoutX="0.0" layoutY="0.0" prefWidth="1300.0" prefHeight="700.0">
+         <!-- Title -->
+         <Label text="Create Your Account" textFill="white" alignment="CENTER" styleClass="title-label" />
 
-      <!-- Username -->
-      <Label layoutX="50" layoutY="120" text="Username" textFill="white" />
-      <TextField fx:id="usernameField" layoutX="150" layoutY="115" prefWidth="200" style="-fx-background-color: #424242; -fx-text-fill: white;" />
+         <!-- Username -->
+         <HBox spacing="10.0" alignment="CENTER">
+            <Label text="Username" textFill="white" styleClass="field-label" />
+            <TextField fx:id="usernameField" prefWidth="300.0" styleClass="input-field" promptText="Enter your username" />
+         </HBox>
 
-      <!-- Email -->
-      <Label layoutX="50" layoutY="170" text="Email" textFill="white" />
-      <TextField fx:id="emailField" layoutX="150" layoutY="165" prefWidth="200" style="-fx-background-color: #424242; -fx-text-fill: white;" />
+         <!-- Email -->
+         <HBox spacing="10.0" alignment="CENTER">
+            <Label text="Email" textFill="white" styleClass="field-label" />
+            <TextField fx:id="emailField" prefWidth="300.0" styleClass="input-field" promptText="Enter your email" />
+         </HBox>
 
-      <!-- Password -->
-      <Label layoutX="50" layoutY="220" text="Password" textFill="white" />
-      <PasswordField fx:id="passwordField" layoutX="150" layoutY="215" prefWidth="200" style="-fx-background-color: #424242; -fx-text-fill: white;" />
+         <!-- Password -->
+         <HBox spacing="10.0" alignment="CENTER">
+            <Label text="Password" textFill="white" styleClass="field-label" />
+            <PasswordField fx:id="passwordField" prefWidth="300.0" styleClass="input-field" promptText="Enter your password" />
+         </HBox>
 
-      <!-- Profile Section -->
-      <Label layoutX="50" layoutY="270" text="Profile Details" textFill="white" />
-      
-      <!-- Height -->
-      <Label layoutX="50" layoutY="320" text="Height (cm)" textFill="white" />
-      <TextField fx:id="heightField" layoutX="150" layoutY="315" prefWidth="200" style="-fx-background-color: #424242; -fx-text-fill: white;" />
+         <!-- Profile Section Title -->
+         <Label text="Profile Information" textFill="white" alignment="CENTER" styleClass="profile-title" />
 
-      <!-- Weight -->
-      <Label layoutX="50" layoutY="370" text="Weight (kg)" textFill="white" />
-      <TextField fx:id="weightField" layoutX="150" layoutY="365" prefWidth="200" style="-fx-background-color: #424242; -fx-text-fill: white;" />
+         <!-- Height -->
+         <HBox spacing="10.0" alignment="CENTER">
+            <Label text="Height (cm)" textFill="white" styleClass="field-label" />
+            <TextField fx:id="heightField" prefWidth="300.0" styleClass="input-field" promptText="Enter your height in cm" />
+         </HBox>
 
-      <!-- Age -->
-      <Label layoutX="50" layoutY="420" text="Age" textFill="white" />
-      <TextField fx:id="ageField" layoutX="150" layoutY="415" prefWidth="200" style="-fx-background-color: #424242; -fx-text-fill: white;" />
+         <!-- Weight -->
+         <HBox spacing="10.0" alignment="CENTER">
+            <Label text="Weight (kg)" textFill="white" styleClass="field-label" />
+            <TextField fx:id="weightField" prefWidth="300.0" styleClass="input-field" promptText="Enter your weight in kg" />
+         </HBox>
 
-      <!-- Fitness Level -->
-      <Label layoutX="50" layoutY="470" text="Fitness Level" textFill="white" />
-      <TextField fx:id="fitnessLevelField" layoutX="150" layoutY="465" prefWidth="200" style="-fx-background-color: #424242; -fx-text-fill: white;" />
+         <!-- Age -->
+         <HBox spacing="10.0" alignment="CENTER">
+            <Label text="Age" textFill="white" styleClass="field-label" />
+            <TextField fx:id="ageField" prefWidth="300.0" styleClass="input-field" promptText="Enter your age" />
+         </HBox>
 
-      <!-- Buttons -->
-      <Button fx:id="submitButton" layoutX="150" layoutY="530" mnemonicParsing="false" prefWidth="200" text="Register" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
-      <Button fx:id="backButton" layoutX="150" layoutY="580" mnemonicParsing="false" prefWidth="200" text="Back" style="-fx-background-color: #f44336; -fx-text-fill: white;" />
+         <!-- Fitness Level -->
+         <HBox spacing="10.0" alignment="CENTER">
+            <Label text="Fitness Level" textFill="white" styleClass="field-label" />
+            <TextField fx:id="fitnessLevelField" prefWidth="300.0" styleClass="input-field" promptText="Beginner, Intermediate, Advanced" />
+         </HBox>
+
+         <!-- Buttons -->
+         <HBox spacing="20.0" alignment="CENTER">
+            <Button fx:id="registerButton" text="Register" prefWidth="200.0" styleClass="submit-button" />
+            <Button fx:id="backButton" text="Back" prefWidth="200.0" styleClass="back-button" />
+         </HBox>
+      </VBox>
    </children>
 </AnchorPane>

@@ -7,3 +7,8 @@ JAZBA-App/JazbaGymProject/bin/MainScene.fxml
 JAZBA-App/JazbaGymProject/bin/App.class
 JAZBA-App/JazbaGymProject/.vscode/settings.json
 JAZBA-App/JazbaGymProject/.vscode/launch.json
+*.class
+
+jazba/target/classes/jazba/MainSceneController.class
+jazba/target/classes/module-info.class
+jazba/target/classes/jazba/MainSceneController.class

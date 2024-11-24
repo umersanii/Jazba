@@ -1,6 +1,5 @@
 package jazba;
 
-import jazba.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -30,19 +29,15 @@ public class RegistrationController {
     private TextField fitnessLevelField;
 
     @FXML
-    private Button submitButton;
+    private Button registerButton; // Corrected ID to match FXML
 
     @FXML
     private Button backButton;
 
-    private RegistrationDAO registrationDAO;
-
     @FXML
     public void initialize() {
-        registrationDAO = new RegistrationDAO(); // Initialize the DAO class
-
         // Handle the Register button action
-        submitButton.setOnAction(event -> handleRegister());
+        registerButton.setOnAction(event -> handleRegister()); // Corrected button reference
 
         // Handle the Back button action
         backButton.setOnAction(event -> handleBack());
@@ -70,16 +65,16 @@ public class RegistrationController {
             int weightValue = Integer.parseInt(weight);
             int ageValue = Integer.parseInt(age);
 
-            // Call DAO to register the user
-            boolean isRegistered = registrationDAO.registerUser(username, email, password, heightValue, weightValue, ageValue, fitnessLevel);
+            // Registration logic (replace with actual backend logic as needed)
+            System.out.println("User Registered:");
+            System.out.println("Username: " + username);
+            System.out.println("Email: " + email);
+            System.out.println("Height: " + heightValue + " cm");
+            System.out.println("Weight: " + weightValue + " kg");
+            System.out.println("Age: " + ageValue);
+            System.out.println("Fitness Level: " + fitnessLevel);
 
-            if (isRegistered) {
-                showAlert("Success", "Registration completed successfully!");
-                // Navigate to the login screen or another page
-                SceneManager.switchScene("Login.fxml"); // Adjust to your actual login FXML file name
-            } else {
-                showAlert("Error", "Registration failed. Please try again.");
-            }
+            showAlert("Success", "Registration completed successfully!");
 
         } catch (NumberFormatException e) {
             showAlert("Error", "Height, weight, and age must be numeric values!");
@@ -87,8 +82,8 @@ public class RegistrationController {
     }
 
     private void handleBack() {
-        // Logic for navigating back to the login scene
-        System.out.println("Back button clicked. Navigating to the login scene...");
+        // Logic for navigating back to the previous scene
+        System.out.println("Back button clicked. Navigating to the previous scene...");
         SceneManager.switchScene("Login.fxml");
     }
 

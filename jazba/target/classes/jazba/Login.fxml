@@ -5,20 +5,48 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragEntered="#addHoverEffect" onMouseDragExited="#addHoverEffect" prefHeight="689.0" prefWidth="1308.0" style="-fx-background-color: #212121;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: linear-gradient(to bottom, #212121, #0f0f0f);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.LoginController">
    <children>
-      <Label layoutX="150" layoutY="50" text="Login" textFill="white">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="50" layoutY="120" text="Username" textFill="white" />
-      <TextField fx:id="usernameField" layoutX="150" layoutY="115" prefWidth="200" />
-      <Label layoutX="50" layoutY="170" text="Password" textFill="white" />
-      <PasswordField fx:id="passwordField" layoutX="150" layoutY="165" prefWidth="200" />
-      <Button fx:id="loginButton" layoutX="150" layoutY="230" mnemonicParsing="false" prefWidth="200" text="Login" />
-      <Button fx:id="registerButton" layoutX="150" layoutY="280" mnemonicParsing="false" prefWidth="200" text="Register" />
+      <!-- Decorative Rectangle -->
+      <Rectangle layoutX="300" layoutY="50" width="700" height="600" arcHeight="20" arcWidth="20" fill="#333333" opacity="0.8" />
+
+      <!-- Login Form Container -->
+      <VBox layoutX="450" layoutY="120" spacing="20" alignment="CENTER" style="-fx-background-color: #212121; -fx-padding: 20; -fx-border-color: #444; -fx-border-radius: 15; -fx-background-radius: 15;">
+         <children>
+            <!-- Title -->
+            <Label text="Welcome Back" textFill="white" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+            <Label text="Login to your account" textFill="#aaaaaa" style="-fx-font-size: 14px;" />
+
+            <!-- Username Field -->
+            <VBox spacing="5" alignment="CENTER_LEFT">
+               <children>
+                  <Label text="Username" textFill="#dddddd" style="-fx-font-size: 14px;" />
+                  <TextField fx:id="usernameField" prefWidth="300" style="-fx-background-color: #444; -fx-text-fill: white; -fx-prompt-text-fill: #aaaaaa; -fx-border-color: transparent; -fx-border-radius: 10; -fx-background-radius: 10;" promptText="Enter your username" />
+               </children>
+            </VBox>
+
+            <!-- Password Field -->
+            <VBox spacing="5" alignment="CENTER_LEFT">
+               <children>
+                  <Label text="Password" textFill="#dddddd" style="-fx-font-size: 14px;" />
+                  <PasswordField fx:id="passwordField" prefWidth="300" style="-fx-background-color: #444; -fx-text-fill: white; -fx-prompt-text-fill: #aaaaaa; -fx-border-color: transparent; -fx-border-radius: 10; -fx-background-radius: 10;" promptText="Enter your password" />
+               </children>
+            </VBox>
+
+            <!-- Buttons -->
+            <VBox spacing="15" alignment="CENTER">
+               <children>
+                  <Button fx:id="loginButton" text="Login" prefWidth="300" style="-fx-background-color: linear-gradient(to right, #6a11cb, #2575fc); -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" />
+                  <Button fx:id="registerButton" text="Register" prefWidth="300"  style="-fx-background-color: transparent; -fx-border-color: #6a11cb; -fx-border-width: 2px; -fx-border-radius: 10; -fx-text-fill: white; -fx-font-size: 16px;" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
+

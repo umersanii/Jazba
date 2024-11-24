@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="625.0" prefWidth="959.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.UserManagementController">
+    <children>
+        <VBox spacing="15" style="-fx-background-color: black;" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            
+            <!-- Title -->
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="User Management" />
+
+            <!-- Filter Section -->
+            <HBox spacing="10">
+                <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Filter Users:" />
+                <ChoiceBox fx:id="filterChoiceBox" style="-fx-background-color: #34495e; -fx-text-fill: white;" />
+                <Button onAction="#applyFilter" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Apply Filter" />
+            </HBox>
+
+            <!-- User List Section -->
+            <TableView fx:id="userTableView" style="-fx-background-color: #34495e;">
+                <columns>
+                    <TableColumn fx:id="idColumn" prefWidth="100" text="User ID" />
+                    <TableColumn fx:id="nameColumn" prefWidth="200" text="Name" />
+                    <TableColumn fx:id="membershipColumn" prefWidth="150" text="Membership" />
+                </columns>
+            </TableView>
+
+            <!-- Details Section -->
+            <VBox spacing="10">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="User Details" />
+                <TextArea fx:id="userDetailsArea" editable="false" style="-fx-background-color: #34495e; -fx-text-fill: white;" wrapText="true" />
+            </VBox>
+
+            <!-- Buttons Section -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button onAction="#goBack" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Back" />
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

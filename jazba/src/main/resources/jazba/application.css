@@ -7,7 +7,6 @@
 /* Background and Container Styles */
 #root {
     -fx-background-color: #212121;
-    background-color: #212121;
 }
 
 /* HBox and VBox for layout */
@@ -96,18 +95,4 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
-}
-
-/* Style for Left Section (Image/Logo) */
-.left-section {
-    -fx-background-color: #212121;
-    -fx-alignment: CENTER;
-    -fx-padding: 20px;
-}
-
-/* Style for the Form on the Right */
-.right-section {
-    -fx-background-color: #212121;
-    -fx-alignment: CENTER;
-    -fx-spacing: 20px;
 }
