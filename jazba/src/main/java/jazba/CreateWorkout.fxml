@@ -41,8 +41,8 @@
          </children>
       </HBox>
 
-      <!-- Content Area -->
-      <VBox fx:id="exerciseBox" layoutY="200.0" spacing="20.0" alignment="TOP_CENTER" style="-fx-padding: 20;" prefWidth="1369.0">
+      <!-- Content Area (starts below the navigation bar) -->
+      <VBox fx:id="exerciseBox" layoutY="140.0" spacing="20.0" alignment="TOP_CENTER" style="-fx-padding: 20;" prefWidth="1369.0">
          <children>
             <!-- Workout Preset Name Field -->
             <TextField fx:id="workoutNameField" promptText="Enter Workout Name" style="-fx-font-size: 16px; -fx-text-fill: black;" prefWidth="300.0" />
