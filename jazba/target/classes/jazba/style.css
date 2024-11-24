@@ -1,0 +1,230 @@
+/* Base styling for the whole layout */
+* {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-base: #212121;
+}
+
+/* General background color */
+.AnchorPane {
+    -fx-background-color: #212121;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: #212121;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #444;
+}
+
+/* Styling for the HBox in the header */
+.HBox {
+    -fx-background-color: black;
+    -fx-padding: 0 10 0 10;
+}
+
+/* Styling for the Logo section */
+.Label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: blue;
+}
+
+/* Styling for workout buttons (Create Workout & Log Workout) */
+.VBox {
+    -fx-background-color: black;
+    -fx-background-radius: 20;
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+.VBox .button {
+    -fx-background-color: transparent;
+    -fx-font-size: 20px;
+    -fx-text-fill: rgb(241, 12, 12);
+    -fx-font-weight: bold;
+}
+
+.VBox .button:hover {
+    -fx-background-color: #444;
+}
+
+/* Chart Section */
+.LineChart {
+    -fx-background-color: #212121;
+    -fx-padding: 10;
+}
+
+.LineChart .chart-plot-background {
+    -fx-background-color: #333;
+}
+
+.LineChart .chart-legend-item {
+    -fx-text-fill: white;
+}
+
+.LineChart .axis-label {
+    -fx-text-fill: white;
+}
+
+/* ComboBox styling */
+.ComboBox {
+    -fx-background-color: #212121;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* Buttons inside HBox (Today, Week, Month, Range) */
+.HBox .button {
+    -fx-background-color: #212121;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5px;
+}
+
+.HBox .button:hover {
+    -fx-background-color: #444;
+}
+
+/* Styling for notification bell */
+.Label#notificationBell {
+    -fx-font-size: 30px;
+    -fx-text-fill: white;
+    cursor: pointer;
+}
+
+/* User menu label */
+.Label#userLabel {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    cursor: pointer;
+}
+
+/* Stats and Achievements section */
+.Label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+}
+
+/* Styling for images (Medal and Stats Icon) */
+.ImageView {
+    -fx-border-radius: 20;
+    -fx-padding: 5;
+    cursor: pointer;
+}
+
+.ImageView:hover {
+    -fx-opacity: 0.8;
+}
+/* Styling for exercise cards */
+.exercise-card {
+    -fx-background-color: #333;
+    -fx-border-radius: 10;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);
+}
+
+/* Styling for exercise title */
+.exercise-title {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0 5 0;
+}
+
+/* Styling for exercise description */
+.exercise-description {
+    -fx-text-fill: #bbbbbb;
+    -fx-font-size: 16px;
+    -fx-font-style: italic;
+    -fx-wrap-text: true;
+}
+
+/* Styling for the select button */
+.select-button {
+    -fx-background-color: #00FF00;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-border-radius: 5;
+}
+
+.select-button:hover {
+    -fx-background-color: #55FF55;
+}
+
+/* General background for the app */
+.VBox {
+    -fx-spacing: 20;
+    -fx-padding: 20;
+    -fx-background-color: #212121;
+}
+
+/* Container for each exercise card */
+.exercise-card {
+    -fx-background-color: #333;
+    -fx-border-radius: 10;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);
+    -fx-alignment: center-left;
+}
+
+/* Exercise name styling */
+.exercise-card .exercise-title {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Description styling under the exercise name */
+.exercise-card .exercise-description {
+    -fx-font-size: 14px;
+    -fx-text-fill: #bbb;
+    -fx-background-color: #444;
+    -fx-padding: 5;
+    -fx-border-radius: 5;
+    -fx-margin-top: 5;
+}
+
+/* Editable fields for reps, sets, and weight */
+.exercise-card .editable-field {
+    -fx-background-color: #212121;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-font-size: 14px;
+    -fx-padding: 5;
+}
+
+/* Add exercise button styling */
+.add-exercise-button {
+    -fx-background-color: #00FF00;
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+/* Hover effect for the buttons */
+.button:hover {
+    -fx-background-color: #444;
+}
+
+/* General ListView styling */
+.list-view {
+    -fx-background-color: #212121;
+    -fx-text-fill: white;
+}
+
