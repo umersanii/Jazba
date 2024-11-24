@@ -1,67 +1,123 @@
 package jazba;
 
-import java.io.IOException;
-
-import javafx.fxml.*;
-import javafx.scene.control.Label;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.IOException;
 
 public class CreateWorkoutController {
 
     @FXML
-    private ListView<VBox> exerciseList;  // Main list where exercises will be added
+    private Button addExerciseButton;
 
-    // Method to add exercise to the main list view
-    public void addExerciseToList(String exerciseName, String description, String targetMuscles) {
-        // Create a new VBox for the exercise card
-        VBox exerciseCard = new VBox(10);
-        exerciseCard.setStyle("-fx-background-color: #333; -fx-border-radius: 10; -fx-padding: 15; -fx-spacing: 10; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);");
+    @FXML
+    private ListView<Exercise> exerciseList; // Use a custom Exercise class for list items
 
-        // Exercise title
-        Label titleLabel = new Label(exerciseName);
-        titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;");
-
-        // Exercise description
-        Label descriptionLabel = new Label(description);
-        descriptionLabel.setStyle("-fx-text-fill: #bbb; -fx-font-size: 14px;");
-
-        // Target muscles label
-        Label targetMusclesLabel = new Label("Target Muscles: " + targetMuscles);
-        targetMusclesLabel.setStyle("-fx-text-fill: #bbb; -fx-font-size: 14px;");
-
-        // Add the labels to the exercise card
-        exerciseCard.getChildren().addAll(titleLabel, descriptionLabel, targetMusclesLabel);
-
-        // Add the exercise card to the ListView
-        exerciseList.getItems().add(exerciseCard);
+    @FXML
+    public void onAddExerciseClicked(MouseEvent event) {
+        openExerciseSelectionPage();
     }
 
-    public void openExerciseSelectionPage() {
-        // Open the ExerciseSelection page and pass the CreateWorkoutController to it
+    @FXML
+    public void initialize() {
+        // Ensure the ListView uses the custom cell factory
+        exerciseList.setCellFactory(listView -> new ExerciseCardCell());
+
+        // Add a sample exercise to demonstrate the card format
+        exerciseList.getItems().add(new Exercise("Sample Exercise", "Sample Muscles", "Sample Description"));
+
+        System.out.println(getClass().getResource("dumbbell.png"));
+
+        // Action for the "Add Exercise" button
+        addExerciseButton.setOnAction(event -> openExerciseSelectionPage());
+    }
+
+    private void openExerciseSelectionPage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ExerciseSelection.fxml"));
             Parent root = loader.load();
 
-            // Get the controller from the loaded FXML file
-            ExerciseSelectionController controller = loader.getController();
-
-            // Pass this CreateWorkoutController to the ExerciseSelectionController
-            controller.setCreateWorkoutController(this);
-
-            // Set the new scene with ExerciseSelection page
-            Stage stage = (Stage) exerciseList.getScene().getWindow();
+            // Create a new stage
+            Stage stage = new Stage();
+            stage.setTitle("Select Exercise");
             stage.setScene(new Scene(root));
             stage.show();
+
+            // Pass the current exercise list view to the ExerciseSelectionController
+            ExerciseSelectionController controller = loader.getController();
+            controller.setMainListView(exerciseList);
+
         } catch (IOException e) {
+            showError("Error", "Unable to load the exercise selection page.");
             e.printStackTrace();
         }
     }
-    
-    public void initialize() {
-        // Initially open the Exercise Selection page
-        openExerciseSelectionPage();
+
+    private void showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // Custom cell factory for the exercise list
+    private static class ExerciseCardCell extends ListCell<Exercise> {
+        private final HBox hbox = new HBox();
+        private final ImageView imageView = new ImageView();
+        private final VBox vbox = new VBox();
+        private final Text exerciseName = new Text();
+        private final Text targetMuscles = new Text();
+        private final Text description = new Text();
+
+        public ExerciseCardCell() {
+            super();
+
+            // Configure HBox layout
+            hbox.setSpacing(10);
+
+            // Configure ImageView
+            imageView.setFitHeight(50);
+            imageView.setFitWidth(50);
+
+            // Configure VBox
+            vbox.getChildren().addAll(exerciseName, targetMuscles, description);
+
+            // Add components to HBox
+            hbox.getChildren().addAll(imageView, vbox);
+        }
+
+        @Override
+        protected void updateItem(Exercise exercise, boolean empty) {
+            super.updateItem(exercise, empty);
+
+            if (empty || exercise == null) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                exerciseName.setText(exercise.getName());
+                targetMuscles.setText("Target Muscles: " + exercise.getTargetMuscles());
+                description.setText(exercise.getDescription());
+
+                // Set a placeholder image
+                Image placeholderImage = new Image("file:/Y:/Season%205/SDA/Jazba/jazba/target/classes/jazba/dumbbell.png");
+               ;
+                imageView.setImage(placeholderImage);
+
+                setGraphic(hbox);
+            }
+        }
     }
 }

@@ -3,7 +3,10 @@ package jazba;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ExerciseSelectionController {
 
@@ -13,54 +16,64 @@ public class ExerciseSelectionController {
     @FXML
     private Button backButton;
 
-    private CreateWorkoutController createWorkoutController;  // Reference to CreateWorkoutController
-
-    // Setter for CreateWorkoutController
-    public void setCreateWorkoutController(CreateWorkoutController controller) {
-        this.createWorkoutController = controller;
-    }
-
-    // This method will be called when a user selects an exercise
-    private void addExerciseToMainList(String exerciseName, String description, String targetMuscles) {
-        // Pass the exercise data to CreateWorkoutController
-        if (createWorkoutController != null) {
-            createWorkoutController.addExerciseToList(exerciseName, description, targetMuscles);
-        }
-    }
+    private ListView<Exercise> mainListView;
 
     public void initialize() {
-        // Populate exercises and set button actions
+        backButton.setOnAction(event -> closeWindow());
         populateExercises();
     }
 
+    public void setMainListView(ListView<Exercise> exerciseList) {
+        this.mainListView = exerciseList;
+    }
+
     private void populateExercises() {
+        // Define some exercises with names, target muscles, and descriptions
         String[][] exercises = {
-            {"Bench Press", "A compound exercise targeting the chest, shoulders, and triceps.", "Chest, Shoulders, Triceps"},
-            {"Squats", "A full-body exercise focusing on the legs and core.", "Legs, Core"},
-            {"Deadlift", "A compound lift engaging the back, legs, and core.", "Back, Legs, Core"},
-            {"Pull-Ups", "A bodyweight exercise for back and biceps.", "Back, Biceps"},
-            {"Bicep Curls", "An isolation exercise to build the biceps.", "Biceps"}
+            {"Bench Press", "Chest, Triceps", "A powerful upper body push exercise."},
+            {"Squats", "Quads, Hamstrings, Glutes", "A lower body compound movement."},
+            {"Deadlift", "Back, Hamstrings, Glutes", "A full-body strength movement."},
+            {"Pull-Ups", "Back, Biceps", "A bodyweight exercise targeting the upper back."},
+            {"Bicep Curls", "Biceps", "An isolation exercise for the arms."}
         };
 
         for (String[] exercise : exercises) {
-            VBox exerciseRow = new VBox(10); // Card for each exercise
-            exerciseRow.setStyle("-fx-background-color: #333; -fx-border-radius: 10; -fx-padding: 15; -fx-spacing: 10; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);");
+            VBox exerciseCard = new VBox(10);
+            exerciseCard.setStyle("-fx-background-color: #333; -fx-padding: 10px; -fx-background-radius: 10px;");
 
-            // Exercise title
-            Button titleButton = new Button(exercise[0]);
-            titleButton.setStyle("-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;");
-            titleButton.setOnAction(event -> addExerciseToMainList(exercise[0], exercise[1], exercise[2]));
-
-            // Exercise description
-            Label descriptionLabel = new Label(exercise[1]);
-            descriptionLabel.setStyle("-fx-text-fill: #bbb; -fx-font-size: 14px;");
+            // Name label
+            Label nameLabel = new Label(exercise[0]);
+            nameLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;");
 
             // Target muscles label
-            Label targetMusclesLabel = new Label("Target Muscles: " + exercise[2]);
-            targetMusclesLabel.setStyle("-fx-text-fill: #bbb; -fx-font-size: 14px;");
+            Label musclesLabel = new Label("Target Muscles: " + exercise[1]);
+            musclesLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: lightgray;");
 
-            exerciseRow.getChildren().addAll(titleButton, descriptionLabel, targetMusclesLabel);
-            exerciseBox.getChildren().add(exerciseRow);
+            // Description label
+            Label descriptionLabel = new Label(exercise[2]);
+            descriptionLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: white;");
+
+            // Select button
+            Button selectButton = new Button("Select");
+            selectButton.setStyle("-fx-background-color: #00FF00; -fx-text-fill: black;");
+            selectButton.setOnAction(event -> addExerciseToMainList(exercise[0], exercise[1], exercise[2]));
+
+            exerciseCard.getChildren().addAll(nameLabel, musclesLabel, descriptionLabel, selectButton);
+            exerciseBox.getChildren().add(exerciseCard);
         }
+    }
+
+    private void addExerciseToMainList(String name, String muscles, String description) {
+        if (mainListView != null) {
+            Exercise exercise = new Exercise(name, muscles, description);
+            mainListView.getItems().add(exercise);
+        }
+        closeWindow();
+    }
+    
+
+    private void closeWindow() {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
     }
 }
