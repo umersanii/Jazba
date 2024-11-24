@@ -38,7 +38,7 @@ public class CreateWorkoutController {
         exerciseList.setCellFactory(listView -> new ExerciseCardCell());
 
         // Add a sample exercise to demonstrate the card format
-        exerciseList.getItems().add(new Exercise("Sample Exercise", "Sample Muscles", "Sample Description"));
+        exerciseList.getItems().add(new Exercise("Sample Exercise", "Sample Muscles", "Sample Description", null, 0, null, 0, 0, 0));
 
         System.out.println(getClass().getResource("dumbbell.png"));
 

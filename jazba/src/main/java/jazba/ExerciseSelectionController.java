@@ -1,5 +1,7 @@
 package jazba;
 
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,49 +30,41 @@ public class ExerciseSelectionController {
     }
 
     private void populateExercises() {
-        // Define some exercises with names, target muscles, and descriptions
-        String[][] exercises = {
-            {"Bench Press", "Chest, Triceps", "A powerful upper body push exercise."},
-            {"Squats", "Quads, Hamstrings, Glutes", "A lower body compound movement."},
-            {"Deadlift", "Back, Hamstrings, Glutes", "A full-body strength movement."},
-            {"Pull-Ups", "Back, Biceps", "A bodyweight exercise targeting the upper back."},
-            {"Bicep Curls", "Biceps", "An isolation exercise for the arms."}
-        };
+        // Fetch exercises from the database
+        List<Exercise> exercises = ExerciseDAO.fetchExercisesFromDatabase();
 
-        for (String[] exercise : exercises) {
+        for (Exercise exercise : exercises) {
             VBox exerciseCard = new VBox(10);
             exerciseCard.setStyle("-fx-background-color: #333; -fx-padding: 10px; -fx-background-radius: 10px;");
 
             // Name label
-            Label nameLabel = new Label(exercise[0]);
+            Label nameLabel = new Label(exercise.getName());
             nameLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;");
 
-            // Target muscles label
-            Label musclesLabel = new Label("Target Muscles: " + exercise[1]);
+            // Muscle groups label
+            Label musclesLabel = new Label("Target Muscles: " + exercise.getMuscleGroups());
             musclesLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: lightgray;");
 
             // Description label
-            Label descriptionLabel = new Label(exercise[2]);
+            Label descriptionLabel = new Label(exercise.getDescription());
             descriptionLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: white;");
 
             // Select button
             Button selectButton = new Button("Select");
             selectButton.setStyle("-fx-background-color: #00FF00; -fx-text-fill: black;");
-            selectButton.setOnAction(event -> addExerciseToMainList(exercise[0], exercise[1], exercise[2]));
+            selectButton.setOnAction(event -> addExerciseToMainList(exercise));
 
             exerciseCard.getChildren().addAll(nameLabel, musclesLabel, descriptionLabel, selectButton);
             exerciseBox.getChildren().add(exerciseCard);
         }
     }
 
-    private void addExerciseToMainList(String name, String muscles, String description) {
+    private void addExerciseToMainList(Exercise exercise) {
         if (mainListView != null) {
-            Exercise exercise = new Exercise(name, muscles, description);
             mainListView.getItems().add(exercise);
         }
         closeWindow();
     }
-    
 
     private void closeWindow() {
         Stage stage = (Stage) backButton.getScene().getWindow();
