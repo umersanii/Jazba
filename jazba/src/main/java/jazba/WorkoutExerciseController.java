@@ -1,8 +1,5 @@
 package jazba;
 
-import java.util.List;
-
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,7 +7,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ExerciseSelectionController {
+import java.util.List;
+
+
+public class WorkoutExerciseController {
 
     @FXML
     private VBox exerciseBox;
@@ -22,38 +22,16 @@ public class ExerciseSelectionController {
 
     public void initialize() {
         backButton.setOnAction(event -> closeWindow());
-        loadExercises();
+        populateExercises();
     }
 
     public void setMainListView(ListView<Exercise> exerciseList) {
         this.mainListView = exerciseList;
     }
 
-    private void loadExercises() {
-        // Use a background thread to fetch exercises to prevent UI freeze
-        Task<List<Exercise>> fetchTask = new Task<>() {
-            @Override
-            protected List<Exercise> call() {
-                return ExerciseDAO.fetchExercisesFromDatabase();
-            }
-        };
-
-        fetchTask.setOnSucceeded(event -> populateExercises(fetchTask.getValue()));
-        fetchTask.setOnFailed(event -> {
-            // Log or show error if fetching fails
-            System.err.println("Failed to fetch exercises: " + fetchTask.getException());
-        });
-
-        new Thread(fetchTask).start();
-    }
-
-    private void populateExercises(List<Exercise> exercises) {
-        if (exercises == null || exercises.isEmpty()) {
-            Label noExercisesLabel = new Label("No exercises available.");
-            noExercisesLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: lightgray;");
-            exerciseBox.getChildren().add(noExercisesLabel);
-            return;
-        }
+    private void populateExercises() {
+        // Fetch exercises from the database
+        List<Exercise> exercises = ExerciseDAO.fetchExercisesFromDatabase();
 
         for (Exercise exercise : exercises) {
             VBox exerciseCard = new VBox(10);
@@ -83,11 +61,7 @@ public class ExerciseSelectionController {
 
     private void addExerciseToMainList(Exercise exercise) {
         if (mainListView != null) {
-            if (!mainListView.getItems().contains(exercise)) {
-                mainListView.getItems().add(exercise);
-            } else {
-                System.out.println("Exercise already added: " + exercise.getName());
-            }
+            mainListView.getItems().add(exercise);
         }
         closeWindow();
     }
@@ -95,10 +69,5 @@ public class ExerciseSelectionController {
     private void closeWindow() {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.close();
-    }
-
-    public void setWorkoutPreset(WorkoutPreset preset) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setWorkoutPreset'");
     }
 }
