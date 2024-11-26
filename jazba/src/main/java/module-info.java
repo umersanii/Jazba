@@ -4,6 +4,7 @@ module jazba {
     requires java.sql;
     requires javafx.graphics;
     requires javafx.base;
+    
 
     opens jazba to javafx.fxml;
     exports jazba;
