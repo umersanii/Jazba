@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutPreset {
+    private int id;
     private String name;
     private List<Exercise> exercises;
 
@@ -18,6 +19,20 @@ public class WorkoutPreset {
 
     }
 
+    public WorkoutPreset(int id, String name2, String description, List<Exercise> exercises2) {
+        this.name = name2;
+        this.exercises = exercises2;
+        this.id = id;
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -34,8 +49,5 @@ public class WorkoutPreset {
         this.exercises.add(exercise);
     }
 
-    public int getId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getId'");
-    }
+
 }

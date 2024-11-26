@@ -33,3 +33,8 @@ Junoon/src/bin/resources/package-info.class
 Junoon/src/bin/resources/structre.ini
 Junoon/src/bin/SceneManager.class
 Junoon/src/bin/style.css
+*.class
+jazba/target/classes/jazba/Exercise.class
+jazba/target/classes/jazba/LogWorkoutController.class
+jazba/target/classes/jazba/LogWorkoutDAO.class
+jazba/target/classes/jazba/WorkoutPreset.class

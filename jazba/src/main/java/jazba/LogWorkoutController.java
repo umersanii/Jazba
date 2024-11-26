@@ -1,6 +1,7 @@
 package jazba;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -51,13 +52,13 @@ public class LogWorkoutController {
 
         // Hook up button actions
         SystemGenerateWorkouts.setOnAction(e -> onSystemGenerateWorkoutsClicked());
-        UserGeneratedWorkouts.setOnAction(e -> onUserGeneratedWorkoutsClicked());
+       // UserGeneratedWorkouts.setOnAction(e -> onUserGeneratedWorkoutsClicked());
         addExerciseButton.setOnAction(e -> onAddExerciseClicked());
         saveWorkoutPresetButton.setOnAction(e -> onSaveWorkoutPresetClicked());
     }
 
     // Method to create a workout node from a preset
-    private VBox createWorkoutNode(WorkoutPreset preset, List<Exercise> exercises) {
+    private VBox createWorkoutNode(WorkoutPreset preset) {
         VBox presetBox = new VBox();
         presetBox.setStyle("-fx-padding: 15; -fx-spacing: 10; -fx-background-color: #2A2A2A; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #000000, 10, 0.3, 0, 3);");
 
@@ -68,8 +69,8 @@ public class LogWorkoutController {
         VBox exerciseContainer = new VBox();
         exerciseContainer.setStyle("-fx-spacing: 10; -fx-padding-top: 10;");
 
-        for (Exercise exercise : exercises) {
-            exerciseContainer.getChildren().add(createExerciseNode(exercise));
+        for (Exercise exercise1 : preset.getExercises()) {
+            exerciseContainer.getChildren().add(createExerciseNode(exercise1));
         }
 
         presetBox.getChildren().add(exerciseContainer);
@@ -85,6 +86,8 @@ public class LogWorkoutController {
         double defaultWeight = exercise.getWeight() > 0 ? exercise.getWeight() : 0.0;
 
         Text exerciseTitle = new Text(exercise.getName());
+        System.out.println(exercise.getName());
+
         exerciseTitle.setStyle("-fx-font-size: 20px; -fx-fill: #FFFFFF; -fx-font-weight: bold;");
 
         VBox titleBox = new VBox();
@@ -139,35 +142,43 @@ private void onSystemGenerateWorkoutsClicked() {
     
     try {
         LogWorkoutDAO dao = new LogWorkoutDAO();
-        // Query to get the system-generated workout presets (e.g., by using a specific memberID for system presets)
-        int memberID = -1;  // Example system member ID
+        int memberID = -1; // Example system member ID for system-generated presets
         List<WorkoutPreset> systemWorkouts = dao.getWorkoutPresetsByMemberID(memberID);
-        List<Exercise> exercises = getExercisesByWorkoutPresetID(memberID);
-        
-        // Loop through the retrieved workout presets and add them to the workout list
+
         for (WorkoutPreset systemPreset : systemWorkouts) {
-            workoutList.getChildren().add(createWorkoutNode(systemPreset, exercises));
+            // Fetch exercises for the specific workoutPresetID
+
+            // Add the preset and its exercises to the workout list
+            workoutList.getChildren().add(createWorkoutNode(systemPreset));
         }
     } catch (SQLException e) {
         showError("Database Error", "Failed to load system-generated workouts.");
     }
 }
 
-@FXML
-private void onUserGeneratedWorkoutsClicked() {
-    workoutList.getChildren().clear();
-    
-    // Query to get the user-generated workout presets (e.g., by using the logged-in member's memberID)
-    int memberID = UserSession.getLoggedInUserID();  // Example: You need a method to get the logged-in member's ID
-    List<WorkoutPreset> userWorkouts = getWorkoutPresetsByMemberID(-1);
 
-    List<Exercise> exercises = getExercisesByWorkoutPresetID(-1);
+// @FXML
+// private void onUserGeneratedWorkoutsClicked() {
+//     workoutList.getChildren().clear();
     
-    // Loop through the retrieved workout presets and add them to the workout list
-    for (WorkoutPreset userPreset : userWorkouts) {
-        workoutList.getChildren().add(createWorkoutNode(userPreset, exercises));
-    }
-}
+//     try {
+//         int memberID = UserSession.getLoggedInUserID(); // Logged-in user's member ID
+//         LogWorkoutDAO dao = new LogWorkoutDAO();
+//         List<WorkoutPreset> userWorkouts = dao.getWorkoutPresetsByMemberID(memberID);
+
+//         for (WorkoutPreset userPreset : userWorkouts) {
+//             // Fetch exercises for the specific workoutPresetID
+//             List<Exercise> exercises = new ArrayList<Exercise>();
+//             Exercise E = new Exercise("1", null, null, null, memberID, null, memberID, memberID, memberID);
+//             exercises.add(E);
+//             // Add the preset and its exercises to the workout list
+//             workoutList.getChildren().add(createWorkoutNode(userWorkouts, exercises));
+//         }
+//     } catch (SQLException e) {
+//         showError("Database Error", "Failed to load user-generated workouts.");
+//     }
+// }
+
 
 private List<Exercise> getExercisesByWorkoutPresetID(int memberID) {
     try {

@@ -114,7 +114,11 @@ public class LogWorkoutDAO {
 
                 // Retrieve exercises for this workout preset
                 List<Exercise> exercises = getExercisesByWorkoutPresetID(presetID);
-
+                System.out.println(presetID);
+                
+                for (Exercise exercise : exercises) {
+                    System.out.println(exercise.getName());
+                }
                 // Create and add WorkoutPreset to list
                 WorkoutPreset preset = new WorkoutPreset(name, description, exercises);
                 presets.add(preset);
@@ -126,31 +130,36 @@ public class LogWorkoutDAO {
     return presets;
 }
 
-public List<Exercise> getExercisesByWorkoutPresetID(int workoutPresetID) {
+public List<Exercise> getExercisesByWorkoutPresetID(int workoutPresetID) throws SQLException {
+    String sql = "SELECT * FROM exercise WHERE workout_preset_id = ?";
     List<Exercise> exercises = new ArrayList<>();
-    String sql = "select * from exercise where workout_preset_id = (?)";
-
+    
     try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-         CallableStatement statement = connection.prepareCall(sql)) {
-
-        statement.setInt(1, workoutPresetID);
-
-        try (ResultSet rs = statement.executeQuery()) {
+         PreparedStatement stmt = connection.prepareStatement(sql)) {
+        
+        stmt.setInt(1, workoutPresetID);
+        
+        try (ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                String exerciseName = rs.getString("name");
-                int sets = rs.getInt("sets");
-                int reps = rs.getInt("reps");
-                double weight = rs.getDouble("weight");
+                Exercise exercise = new Exercise(sql, sql, sql, sql, workoutPresetID, sql, workoutPresetID, workoutPresetID, workoutPresetID);
+                exercise.setId(rs.getInt("id"));
+                exercise.setWorkoutPresetId(rs.getInt("workout_preset_id"));
+                exercise.setName(rs.getString("name"));
+                exercise.setMuscleGroups(rs.getString("muscleGroups"));
+                exercise.setDescription(rs.getString("description"));
+                exercise.setEquipment(rs.getString("equipment"));
+                exercise.setDifficulty(rs.getInt("difficulty"));
+                exercise.setInstructions(rs.getString("instructions"));
+                exercise.setSets(rs.getInt("sets"));
+                exercise.setReps(rs.getInt("reps"));
+                exercise.setWeight(rs.getDouble("weight"));
 
-                // Create Exercise object
-                Exercise exercise = new Exercise(exerciseName, null, null, null, sets, null, reps, reps, weight);
                 exercises.add(exercise);
             }
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
     return exercises;
 }
+
 
 }
