@@ -18,7 +18,7 @@ public class Jazba extends Application {
             DB.createDBAndTables(); // Create the database and tables if they don't exist
             if (conn != null) {
                 // Proceed with the application if the connection is successful
-                Parent root = FXMLLoader.load(getClass().getResource("StatsPage.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
                 SceneManager.setStage(primaryStage); // Set stage for SceneManager
                 primaryStage.setScene(new Scene(root));
                 primaryStage.setTitle("Fitness Tracker App");
