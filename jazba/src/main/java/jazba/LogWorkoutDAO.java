@@ -173,7 +173,7 @@ public List<Exercise> getExercisesByWorkoutPresetID(int workoutPresetID) throws 
                 }
             }
 
-            insertStatsBatch(workoutID, preset.getExercises());
+            insertStatsBatch(workoutID, preset.getExercises(), memberId);
 
             
         } catch (SQLException e) {
@@ -183,8 +183,8 @@ public List<Exercise> getExercisesByWorkoutPresetID(int workoutPresetID) throws 
     }
 
 
-    public void insertStatsBatch(int workoutId, List<Exercise> exercises) {
-        String sql = "INSERT INTO stats (exerciseName, sets, reps, weight, workoutID) VALUES (?, ?, ?, ?, ?)";
+    public void insertStatsBatch(int workoutId, List<Exercise> exercises, int memberID) {
+        String sql = "INSERT INTO stats (exerciseName, sets, reps, weight, workoutID, memberID) VALUES (?, ?, ?, ?, ?, ?)";
         
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -195,6 +195,7 @@ public List<Exercise> getExercisesByWorkoutPresetID(int workoutPresetID) throws 
                 stmt.setInt(3, exercise.getReps());
                 stmt.setDouble(4, exercise.getWeight());
                 stmt.setInt(5, workoutId);
+                stmt.setInt(6, memberID);
                 stmt.addBatch(); // Add to batch
             }
             

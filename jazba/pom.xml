@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -13,6 +14,7 @@
     </properties>
 
     <dependencies>
+        <!-- JavaFX dependencies -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -23,15 +25,35 @@
             <artifactId>javafx-fxml</artifactId>
             <version>17</version>
         </dependency>
+
+        <!-- MySQL connector dependency -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.31</version>
         </dependency>
+
+        <!-- Gluon Charm Glisten dependency -->
+        <dependency>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>charm-glisten</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+        
     </dependencies>
+
+    <repositories>
+        <!-- Gluon repository to fetch Charm Glisten dependency -->
+        <repository>
+            <id>gluon-repo</id>
+            <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -41,16 +63,16 @@
                 </configuration>
             </plugin>
 
-            <!-- Updated JavaFX Maven Plugin version -->
+            <!-- JavaFX Maven Plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>3.0.0</version> <!-- Upgraded to the latest plugin version -->
+                <version>3.0.0</version> <!-- Latest plugin version -->
                 <executions>
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>jazba.App</mainClass> <!-- Update to your main class path -->
+                            <mainClass>jazba.App</mainClass> <!-- Update with your actual main class -->
                         </configuration>
                     </execution>
                 </executions>
