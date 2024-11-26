@@ -1,5 +1,8 @@
 package jazba;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -53,7 +56,8 @@ public class LogWorkoutController {
         saveWorkoutPresetButton.setOnAction(e -> onSaveWorkoutPresetClicked());
     }
 
-    private VBox createWorkoutNode(WorkoutPreset preset) {
+    // Method to create a workout node from a preset
+    private VBox createWorkoutNode(WorkoutPreset preset, List<Exercise> exercises) {
         VBox presetBox = new VBox();
         presetBox.setStyle("-fx-padding: 15; -fx-spacing: 10; -fx-background-color: #2A2A2A; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #000000, 10, 0.3, 0, 3);");
 
@@ -63,9 +67,8 @@ public class LogWorkoutController {
 
         VBox exerciseContainer = new VBox();
         exerciseContainer.setStyle("-fx-spacing: 10; -fx-padding-top: 10;");
-        
 
-        for (Exercise exercise : preset.getExercises()) {
+        for (Exercise exercise : exercises) {
             exerciseContainer.getChildren().add(createExerciseNode(exercise));
         }
 
@@ -77,25 +80,20 @@ public class LogWorkoutController {
         HBox exerciseBox = new HBox();
         exerciseBox.setStyle("-fx-padding: 10; -fx-spacing: 10; -fx-background-color: #3A3A3A; -fx-background-radius: 5; -fx-alignment: center;");
     
-        // Default values for sets, reps, and weight
-        int defaultSets = exercise.getSets() > 0 ? exercise.getSets() : 3; // Use 3 if no value
-        int defaultReps = exercise.getReps() > 0 ? exercise.getReps() : 10; // Use 10 if no value
-        double defaultWeight = exercise.getWeight() > 0 ? exercise.getWeight() : 0.0; // Use 0.0 if no value
-    
-        // Create a Text node for the exercise name with a larger font size
+        int defaultSets = exercise.getSets() > 0 ? exercise.getSets() : 3;
+        int defaultReps = exercise.getReps() > 0 ? exercise.getReps() : 10;
+        double defaultWeight = exercise.getWeight() > 0 ? exercise.getWeight() : 0.0;
+
         Text exerciseTitle = new Text(exercise.getName());
         exerciseTitle.setStyle("-fx-font-size: 20px; -fx-fill: #FFFFFF; -fx-font-weight: bold;");
-    
-        // VBox for the first row (exercise name)
+
         VBox titleBox = new VBox();
         titleBox.setStyle("-fx-padding: 5; -fx-spacing: 5;");
         titleBox.getChildren().add(exerciseTitle);
-    
-        // HBox for the second row (sets, reps, weight and save button)
+
         HBox inputBox = new HBox();
         inputBox.setStyle("-fx-spacing: 10; -fx-padding-top: 10;");
         
-        // Create the input fields and labels for sets, reps, and weight
         TextField setsField = new TextField(String.valueOf(defaultSets));
         setsField.setPrefWidth(50);
         setsField.setStyle("-fx-background-radius: 5; -fx-border-color: #5A5A5A; -fx-border-radius: 5; -fx-text-fill: #000000; -fx-prompt-text-fill: #B0B0B0; -fx-background-color: #ffffff;");
@@ -108,7 +106,6 @@ public class LogWorkoutController {
         weightField.setPrefWidth(60);
         weightField.setStyle("-fx-background-radius: 5; -fx-border-color: #5A5A5A; -fx-border-radius: 5; -fx-text-fill: #000000; -fx-prompt-text-fill: #B0B0B0; -fx-background-color: #ffffff;");
     
-        // Create the Save button to update values
         Button saveButton = new Button("Save");
         saveButton.setStyle("-fx-background-color: #007BFF; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;");
         saveButton.setOnAction(e -> {
@@ -120,47 +117,76 @@ public class LogWorkoutController {
                 showError("Error", "Please enter valid numbers for sets, reps, and weight.");
             }
         });
-    
-        // Add the fields to the input box (sets, reps, weight) and the save button
+
         inputBox.getChildren().addAll(
             new Text("Sets: "), setsField,
             new Text("Reps: "), repsField,
             new Text("Weight (kg): "), weightField,
             saveButton
         );
-    
-        // VBox for the full exercise block (title and input fields)
+
         VBox exerciseContainer = new VBox();
         exerciseContainer.setStyle("-fx-spacing: 10; -fx-padding-top: 10;");
         exerciseContainer.getChildren().addAll(titleBox, inputBox);
-    
-        // Return the full exercise node as a HBox (containing the exercise container)
+
         exerciseBox.getChildren().add(exerciseContainer);
-    
         return exerciseBox;
     }
+
+@FXML
+private void onSystemGenerateWorkoutsClicked() {
+    workoutList.getChildren().clear();
     
-    @FXML
-    private void onSystemGenerateWorkoutsClicked() {
-        workoutList.getChildren().clear();
-
-        WorkoutPreset systemPreset = new WorkoutPreset("Full Body Blast");
-        systemPreset.addExercise(new Exercise("Push-Up", null, null, null, 3, null, 12, 0, 0));
-        systemPreset.addExercise(new Exercise("Plank", null, null, null, 3, null, 30, 0, 0));
-        systemPreset.addExercise(new Exercise("Jump Squats", null, null, null, 3, null, 15, 0, 0));
-
-        workoutList.getChildren().add(createWorkoutNode(systemPreset));
+    try {
+        LogWorkoutDAO dao = new LogWorkoutDAO();
+        // Query to get the system-generated workout presets (e.g., by using a specific memberID for system presets)
+        int memberID = -1;  // Example system member ID
+        List<WorkoutPreset> systemWorkouts = dao.getWorkoutPresetsByMemberID(memberID);
+        List<Exercise> exercises = getExercisesByWorkoutPresetID(memberID);
+        
+        // Loop through the retrieved workout presets and add them to the workout list
+        for (WorkoutPreset systemPreset : systemWorkouts) {
+            workoutList.getChildren().add(createWorkoutNode(systemPreset, exercises));
+        }
+    } catch (SQLException e) {
+        showError("Database Error", "Failed to load system-generated workouts.");
     }
+}
 
-    @FXML
-    private void onUserGeneratedWorkoutsClicked() {
-        workoutList.getChildren().clear();
+@FXML
+private void onUserGeneratedWorkoutsClicked() {
+    workoutList.getChildren().clear();
+    
+    // Query to get the user-generated workout presets (e.g., by using the logged-in member's memberID)
+    int memberID = UserSession.getLoggedInUserID();  // Example: You need a method to get the logged-in member's ID
+    List<WorkoutPreset> userWorkouts = getWorkoutPresetsByMemberID(-1);
 
-        WorkoutPreset userPreset = new WorkoutPreset("User Favorites");
-        userPreset.addExercise(new Exercise("Dumbbell Curl", null, null, null, 4, null, 10, 0, 20.0));
-        userPreset.addExercise(new Exercise("Bench Press", null, null, null, 4, null, 8, 0, 50.0));
+    List<Exercise> exercises = getExercisesByWorkoutPresetID(-1);
+    
+    // Loop through the retrieved workout presets and add them to the workout list
+    for (WorkoutPreset userPreset : userWorkouts) {
+        workoutList.getChildren().add(createWorkoutNode(userPreset, exercises));
+    }
+}
 
-        workoutList.getChildren().add(createWorkoutNode(userPreset));
+private List<Exercise> getExercisesByWorkoutPresetID(int memberID) {
+    try {
+        LogWorkoutDAO dao = new LogWorkoutDAO();
+        return dao.getExercisesByWorkoutPresetID(memberID);
+    } catch (SQLException e) {
+        showError("Database Error", "Failed to load user-generated workouts.");
+        return List.of();
+    }
+}
+
+    private List<WorkoutPreset> getWorkoutPresetsByMemberID(int memberID) {
+        try {
+            LogWorkoutDAO dao = new LogWorkoutDAO();
+            return dao.getWorkoutPresetsByMemberID(memberID);
+        } catch (SQLException e) {
+            showError("Database Error", "Failed to load user-generated workouts.");
+            return List.of();
+        }
     }
 
     @FXML
@@ -188,12 +214,12 @@ public class LogWorkoutController {
         currentPreset.addExercise(newExercise);
 
         workoutList.getChildren().clear();
-        workoutList.getChildren().add(createWorkoutNode(currentPreset));
+      //  workoutList.getChildren().add(createWorkoutNode(currentPreset));
 
         exerciseNameField.clear();
-        setsField.setText("3"); // Default value
-        repsField.setText("10"); // Default value
-        weightField.setText("0.0"); // Default value
+        setsField.setText("3");
+        repsField.setText("10");
+        weightField.setText("0.0");
     }
 
     @FXML

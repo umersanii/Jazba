@@ -12,6 +12,12 @@ public class WorkoutPreset {
         this.exercises = new ArrayList<>();
     }
 
+    public WorkoutPreset(String name2, String description, List<Exercise> exercises2) {
+        this.name = name2;
+        this.exercises = exercises2;
+
+    }
+
     public String getName() {
         return name;
     }
@@ -26,5 +32,10 @@ public class WorkoutPreset {
 
     public void addExercise(Exercise exercise) {
         this.exercises.add(exercise);
+    }
+
+    public int getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
     }
 }

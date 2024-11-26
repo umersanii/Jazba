@@ -31,7 +31,7 @@ public class WorkoutExerciseController {
 
     private void populateExercises() {
         // Fetch exercises from the database
-        List<Exercise> exercises = ExerciseDAO.fetchExercisesFromDatabase();
+        List<Exercise> exercises = createWorkoutPresetDAO.fetchExercisesFromDatabase();
 
         for (Exercise exercise : exercises) {
             VBox exerciseCard = new VBox(10);

@@ -31,7 +31,7 @@
         @FXML
         private TextField workoutNameField; // Field for workout preset name
 
-        private ExerciseDAO exerciseDAO = new ExerciseDAO();  // Instantiate ExerciseDAO
+        private createWorkoutPresetDAO exerciseDAO = new createWorkoutPresetDAO();  // Instantiate ExerciseDAO
 
         @FXML
         public void onAddExerciseClicked(ActionEvent event) {  // Changed to ActionEvent
@@ -71,6 +71,8 @@
 
             // Assuming you have a method to get the logged-in memberID
             // Get logged-in user's memberID
+            int user = UserSession.getLoggedInUserID();
+            int workout_preset_id = exerciseDAO.saveWorkoutPreset(workoutName, user);
 
             // Iterate through the exercises and check if all input fields are filled
             for (Exercise exercise : exerciseList.getItems()) {
@@ -88,14 +90,10 @@
                 String targetMuscles = exercise.getTargetMuscles();
                 String description = exercise.getDescription();
                 System.out.println("Exercise: " + exerciseName + ", Sets: " + sets + ", Reps: " + reps + ", Weight: " + weight);
+                for (Exercise exercise2 : exerciseList.getItems()) {
+                    exerciseDAO.saveExercise(workout_preset_id, exerciseName, targetMuscles, description, sets, reps, weight);                }
                 // Call ExerciseDAO to save this data into the workout_preset table
-                boolean success = exerciseDAO.saveWorkoutPreset(workoutName, exerciseName, targetMuscles, description, sets, reps, weight);
 
-                if (success) {
-                    showInfo("Success", "Workout preset saved successfully!");
-                } else {
-                    showError("Error", "Failed to save the workout preset.");
-                }
             }
         }
 

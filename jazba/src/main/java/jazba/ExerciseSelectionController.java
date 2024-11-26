@@ -34,7 +34,7 @@ public class ExerciseSelectionController {
         Task<List<Exercise>> fetchTask = new Task<>() {
             @Override
             protected List<Exercise> call() {
-                return ExerciseDAO.fetchExercisesFromDatabase();
+                return createWorkoutPresetDAO.fetchExercisesFromDatabase();
             }
         };
 
@@ -97,8 +97,5 @@ public class ExerciseSelectionController {
         stage.close();
     }
 
-    public void setWorkoutPreset(WorkoutPreset preset) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setWorkoutPreset'");
-    }
+
 }
