@@ -73,7 +73,35 @@ public class LogWorkoutController {
             exerciseContainer.getChildren().add(createExerciseNode(exercise1));
         }
 
+
+        addExerciseButton.setOnAction(e -> {
+            exerciseNameField.clear();
+            setsField.setText("3");
+            repsField.setText("10");
+            weightField.setText("0.0");
+        });
+
+
+
         presetBox.getChildren().add(exerciseContainer);
+        Button logworkout = new Button("Log Workout");
+        logworkout.setStyle("-fx-background-color: #007BFF; -fx-alignment: center; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;");
+        presetBox.getChildren().add(logworkout);
+
+        logworkout.setOnAction(e -> {
+            try {
+                LogWorkoutDAO dao = new LogWorkoutDAO();
+                int memberID = 2; // Example system member ID for system-generated presets
+                dao.LogWorkout(preset, memberID);
+
+                showInfo("Success", "Workout logged successfully.");
+            } catch (SQLException ex) {
+                showError("Database Error", "Failed to log workout.");
+            } catch (NumberFormatException ex) {
+                showError("Error", "Please enter valid numbers for sets, reps, and weight.");
+            }
+        });
+
         return presetBox;
     }
 
@@ -142,7 +170,7 @@ private void onSystemGenerateWorkoutsClicked() {
     
     try {
         LogWorkoutDAO dao = new LogWorkoutDAO();
-        int memberID = -1; // Example system member ID for system-generated presets
+        int memberID = 0; // Example system member ID for system-generated presets
         List<WorkoutPreset> systemWorkouts = dao.getWorkoutPresetsByMemberID(memberID);
 
         for (WorkoutPreset systemPreset : systemWorkouts) {

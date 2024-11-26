@@ -42,25 +42,6 @@ public class LogWorkoutDAO {
     }
     
 
-    // Method to save a workout preset
-    public int saveWorkoutPreset(WorkoutPreset preset, int memberId) throws SQLException {
-        String sql = "INSERT INTO Workout (memberID, date, time, presetID) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            statement.setInt(1, memberId);
-            statement.setDate(2, Date.valueOf(LocalDate.now()));  // Assuming you want today's date
-            statement.setTime(3, Time.valueOf(LocalTime.now()));  // Assuming you want the current time
-            statement.setInt(4, preset.getId());
-
-            statement.executeUpdate();
-            
-            ResultSet rs = statement.getGeneratedKeys();
-            if (rs.next()) {
-                return rs.getInt(1);  // Return the last inserted workout ID
-            } else {
-                throw new SQLException("Creating workout failed, no ID obtained.");
-            }
-        }
-    }
 
     // Method to save exercises associated with a workout
     public void saveExerciseStats(int workoutID, Exercise exercise) throws SQLException {
@@ -100,7 +81,6 @@ public class LogWorkoutDAO {
     public List<WorkoutPreset> getWorkoutPresetsByMemberID(int memberID) {
     List<WorkoutPreset> presets = new ArrayList<>();
     String sql = "select * from workoutpreset where memberID = (?)";
-    System.out.println("memberID: " + memberID);
     try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
          CallableStatement statement = connection.prepareCall(sql)) {
 
@@ -116,11 +96,14 @@ public class LogWorkoutDAO {
                 List<Exercise> exercises = getExercisesByWorkoutPresetID(presetID);
                 System.out.println(presetID);
                 
+                
                 for (Exercise exercise : exercises) {
                     System.out.println(exercise.getName());
                 }
                 // Create and add WorkoutPreset to list
-                WorkoutPreset preset = new WorkoutPreset(name, description, exercises);
+                System.out.println("workoutpresetid: " + presetID);
+
+                WorkoutPreset preset = new WorkoutPreset(presetID, name, description, exercises);
                 presets.add(preset);
             }
         }
@@ -161,5 +144,67 @@ public List<Exercise> getExercisesByWorkoutPresetID(int workoutPresetID) throws 
     return exercises;
 }
 
+    public void LogWorkout(WorkoutPreset preset, int memberId) {
+        System.out.println(preset.getId());
+        String sql = "INSERT INTO workout (memberID, date, time, presetID) VALUES (?, ?, ?, ?)";
+        
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            
+            // Set parameters for the prepared statement
+            stmt.setInt(1, memberId); // Member ID
+            stmt.setDate(2, Date.valueOf(LocalDate.now())); // Current date
+            stmt.setTime(3, Time.valueOf(LocalTime.now())); // Current time
+            stmt.setInt(4, preset.getId()); // WorkoutPreset ID
+            
+            // Execute the query
+            int affectedRows = stmt.executeUpdate();
+            
+            if (affectedRows == 0) {
+                throw new SQLException("Inserting workout failed, no rows affected.");
+            }
+            int workoutID;
+            // Retrieve the generated workout ID
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    workoutID = generatedKeys.getInt(1); // Return the generated workout ID
+                } else {
+                    throw new SQLException("Inserting workout failed, no ID obtained.");
+                }
+            }
+
+            insertStatsBatch(workoutID, preset.getExercises());
+
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+             // Indicate failure
+        }
+    }
+
+
+    public void insertStatsBatch(int workoutId, List<Exercise> exercises) {
+        String sql = "INSERT INTO stats (exerciseName, sets, reps, weight, workoutID) VALUES (?, ?, ?, ?, ?)";
+        
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+            
+            for (Exercise exercise : exercises) {
+                stmt.setString(1, exercise.getName());
+                stmt.setInt(2, exercise.getSets());
+                stmt.setInt(3, exercise.getReps());
+                stmt.setDouble(4, exercise.getWeight());
+                stmt.setInt(5, workoutId);
+                stmt.addBatch(); // Add to batch
+            }
+            
+            int[] result = stmt.executeBatch(); // Execute all in one go
+            
+            System.out.println(result.length + " stats entries inserted successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 
 }
