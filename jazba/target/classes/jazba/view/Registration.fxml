@@ -10,7 +10,7 @@
 <?import javafx.geometry.Pos?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" styleClass="background" stylesheets="@registration.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" styleClass="background" stylesheets="@../resources/registration.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.RegistrationController">
    <children>
       <!-- Main container: VBox for centering everything vertically and horizontally -->
       <VBox alignment="CENTER" spacing="20.0" layoutX="0.0" layoutY="0.0" prefWidth="1300.0" prefHeight="700.0">

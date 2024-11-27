@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragEntered="#addHoverEffect" onMouseDragExited="#addHoverEffect" prefHeight="689.0" prefWidth="1308.0" style="-fx-background-color: #212121;" stylesheets="@app;/application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.MainSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragEntered="#addHoverEffect" onMouseDragExited="#addHoverEffect" prefHeight="689.0" prefWidth="1308.0" style="-fx-background-color: #212121;" stylesheets="jazba.resources.application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.MainSceneController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;">
          <children>

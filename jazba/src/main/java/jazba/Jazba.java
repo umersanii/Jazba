@@ -22,7 +22,7 @@ public class Jazba extends Application {
             DB.createDBAndTables(); // Create the database and tables if they don't exist
             if (conn != null) {
                 // Proceed with the application if the connection is successful
-                java.net.URL resource = getClass().getResource("resources/style.css");
+                java.net.URL resource = getClass().getResource("resources/registration.css");
                 if (resource != null) {
                     System.out.println("FXML file found: " + resource.toExternalForm());
                 } else {
@@ -30,7 +30,7 @@ public class Jazba extends Application {
                 }
                 System.out.println("Looking for FXML file at: " + getClass().getResource("MainScene.fxml"));
 
-                Parent root = FXMLLoader.load(getClass().getResource("view/StatsPage.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("view/Registration.fxml"));
                 SceneManager.setStage(primaryStage); // Set stage for SceneManager
                 primaryStage.setScene(new Scene(root));
                 primaryStage.setTitle("Fitness Tracker App");
