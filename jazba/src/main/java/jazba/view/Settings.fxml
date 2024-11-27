@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="700.0" prefWidth="881.0" style="-fx-background-color: linear-gradient(to bottom, #212121, #0f0f0f);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.SettingsController">
+    <children>
+        <VBox layoutX="180.0" layoutY="100.0" prefHeight="500.0" prefWidth="500.0" spacing="20" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-color: #444; -fx-border-radius: 20; -fx-padding: 20;">
+            <children>
+                <!-- Title -->
+                <Label text="Settings" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                <Label text="Customize your experience" style="-fx-font-size: 14px; -fx-text-fill: #aaaaaa;" />
+
+                <!-- Theme Selection -->
+                <VBox spacing="10">
+                    <children>
+                        <Label text="Choose Theme" style="-fx-font-size: 16px; -fx-text-fill: #dddddd;" />
+                        <ChoiceBox fx:id="themeChoiceBox" style="-fx-background-color: #444; -fx-text-fill: white;" />
+                    </children>
+                </VBox>
+
+                <!-- Update Profile -->
+                <VBox spacing="10">
+                    <children>
+                        <Label text="Update Profile" style="-fx-font-size: 16px; -fx-text-fill: #dddddd;" />
+                        <TextField fx:id="usernameField" promptText="Enter new username" style="-fx-background-color: #444; -fx-text-fill: white; -fx-background-radius: 10;" />
+                        <Button onAction="#updateProfile" text="Update" style="-fx-background-color: linear-gradient(to right, #6a11cb, #2575fc); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10;" />
+                    </children>
+                </VBox>
+
+                <!-- Reset Settings -->
+                <VBox spacing="10">
+                    <children>
+                        <Label text="Reset All Settings" style="-fx-font-size: 16px; -fx-text-fill: #dddddd;" />
+                        <Button onAction="#resetSettings" text="Reset" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10;" />
+                    </children>
+                </VBox>
+
+                <!-- Back Button -->
+                <Button onAction="#goBack" text="Back" style="-fx-background-color: #555; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10;" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

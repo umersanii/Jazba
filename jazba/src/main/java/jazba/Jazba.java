@@ -5,8 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jazba.models.SceneManager;
+import jazba.utils.DB;
 
 import java.sql.Connection;
+
+import javax.print.DocFlavor.URL;
 
 public class Jazba extends Application {
 
@@ -18,7 +22,15 @@ public class Jazba extends Application {
             DB.createDBAndTables(); // Create the database and tables if they don't exist
             if (conn != null) {
                 // Proceed with the application if the connection is successful
-                Parent root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+                java.net.URL resource = getClass().getResource("/view/MainScene.fxml");
+                if (resource != null) {
+                    System.out.println("FXML file found: " + resource.toExternalForm());
+                } else {
+                    System.out.println("FXML file not found. Check the path!");
+                }
+                System.out.println("Looking for FXML file at: " + getClass().getResource("MainScene.fxml"));
+
+                Parent root = FXMLLoader.load(getClass().getResource("view/MainScene.fxml"));
                 SceneManager.setStage(primaryStage); // Set stage for SceneManager
                 primaryStage.setScene(new Scene(root));
                 primaryStage.setTitle("Fitness Tracker App");
