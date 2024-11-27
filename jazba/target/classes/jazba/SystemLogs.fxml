@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.SystemLogsController">
+    <children>
+        <VBox layoutX="189.0" layoutY="32.0" prefHeight="528.0" prefWidth="522.0" spacing="20" style="-fx-background-color: #2b2b2b; -fx-padding: 20; -fx-border-color: #444; -fx-border-width: 1;">
+            <children>
+                <!-- Title -->
+                <Label style="-fx-font-size: 24px; -fx-text-fill: white;" text="System Logs" />
+
+                <!-- Filter Options -->
+                <ComboBox fx:id="filterComboBox" onAction="#applyFilter" promptText="Filter Logs" style="-fx-font-size: 14px;" />
+
+                <!-- Logs List -->
+                <ListView fx:id="logsListView" onMouseClicked="#showLogDetails" prefHeight="243.0" prefWidth="479.0" style="-fx-background-color: #333; -fx-text-fill: white;" />
+
+                <!-- Log Details Area -->
+                <TextArea fx:id="logDetailsArea" editable="false" prefHeight="150.0" style="-fx-background-color: #222; -fx-text-fill: black;" />
+
+                <!-- Buttons -->
+                <Button onAction="#clearLogs" style="-fx-background-color: #d9534f; -fx-text-fill: white;" text="Clear Logs" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

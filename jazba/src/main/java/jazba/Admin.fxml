@@ -2,47 +2,49 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="1234.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1188.0" style="-fx-background-color: linear-gradient(to bottom, #212121, #0f0f0f);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.AdminController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="1234.0" spacing="20.0" style="-fx-background-color: black;">
+      <!-- Top Black HBox -->
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="1188.0" spacing="20.0" style="-fx-background-color: black;">
          <children>
-            <Label alignment="CENTER" prefHeight="139.0" prefWidth="161.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="Jazba" />
-            <ImageView fitHeight="150.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
-            <Region prefHeight="150.0" prefWidth="121.0" />
-            <Button fx:id="overviewbutton" mnemonicParsing="false" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-font-size: 14;" text="Overview" />
-            <Button fx:id="manageusers" mnemonicParsing="false" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-font-size: 14;" text="Manage Users" />
-            <Button fx:id="transactionbutton" mnemonicParsing="false" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-font-size: 14;" text="Transactions" />
-            <Region prefHeight="150.0" prefWidth="153.0" />
-            <ImageView fitHeight="150.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" />
-            <Label alignment="CENTER" prefHeight="136.0" prefWidth="124.0" style="-fx-text-fill: white; -fx-font-size: 16px;" text="Name ▼" />
-            
+            <Label alignment="CENTER" prefHeight="73.0" prefWidth="210.0" style="-fx-text-fill: white; -fx-font-size: 30px; -fx-font-weight: bold;" text="Jazba " />
+            <Region prefHeight="100.0" prefWidth="24.0" HBox.hgrow="ALWAYS" />
+           <Button fx:id="overviewbutton" prefWidth="150.0" style="-fx-background-color: linear-gradient(to right, #654ea3, #eaafc8);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Overview" />
+            <Button fx:id="reportsbutton" onAction="#handleReports" prefWidth="150.0" style="-fx-background-color: linear-gradient(to right, #141e30, #243b55);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Reports" />
+            <Button fx:id="feedbackbutton" onAction="#handleFeedback" prefWidth="150.0" style="-fx-background-color: linear-gradient(to right, #ff6a00, #ee0979);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Feedback" />
+            <Region prefHeight="100.0" prefWidth="83.0" HBox.hgrow="ALWAYS" />
+            <Label prefHeight="99.0" prefWidth="143.0" style="-fx-text-fill: white; -fx-font-size: 16px;" text="Admin Name ▼" />
          </children>
       </HBox>
-      <VBox alignment="CENTER" layoutX="97.0" layoutY="198.0" prefHeight="193.0" prefWidth="428.0" style="-fx-background-color: black; -fx-background-radius: 20;">
+
+      <!-- Main Section -->
+      <HBox alignment="CENTER" layoutY="144.0" prefHeight="506.0" prefWidth="1188.0" spacing="50.0">
          <children>
-            <Button fx:id="userdetailbutton" mnemonicParsing="false" style="-fx-background-color: black; -fx-font-size: 25; -fx-text-fill: white;" text="User Details" onAction="#openUserManagement"/>
+            <!-- System Utilities -->
+            <VBox alignment="CENTER" prefWidth="400.0" spacing="20.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-padding: 20;">
+               <children>
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="System Utilities" textFill="white" />
+                  <Button fx:id="notifyuserbutton" onAction="#handleNotifyUserButton" prefWidth="300" style="-fx-background-color: linear-gradient(to right, #11998e, #38ef7d);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Notify User 🔔" />
+                  <Button fx:id="systemlogsbutton" onAction="#handleSystemLogs" prefWidth="300" style="-fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="System Logs" />
+                  <Button fx:id="broadcastmessagebutton" onAction="#handleBroadcastMessageButton" prefWidth="300" style="-fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Broadcast Message" />
+               </children>
+            </VBox>
+
+            <!-- Admin Controls -->
+            <VBox alignment="CENTER" prefWidth="400.0" spacing="20.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-padding: 20;">
+               <children>
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Admin Controls" textFill="white" />
+                  <Button fx:id="settingsbutton" onAction="#handleSettings" prefWidth="300" style="-fx-background-color: linear-gradient(to right, #ff9a9e, #fad0c4);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Settings" />
+                  <Button fx:id="userdetailbutton" onAction="#openUserManagement" prefWidth="300" style="-fx-background-color: linear-gradient(to right, #7f00ff, #e100ff);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="User Details" />
+                  <Button fx:id="checktransactionbutton" prefWidth="300" style="-fx-background-color: linear-gradient(to right, #f7971e, #ffd200);; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Check Transactions" />
+               </children>
+            </VBox>
          </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="561.0" layoutY="198.0" prefHeight="421.0" prefWidth="271.0" style="-fx-background-color: black; -fx-background-radius: 20;">
-         <children>
-            <Button fx:id="checktransactionbutton" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-size: 25; -fx-text-fill: white;" text="Check Transactions" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="97.0" layoutY="425.0" prefHeight="193.0" prefWidth="428.0" style="-fx-background-color: black; -fx-background-radius: 20;">
-         <children>
-            <Button fx:id="notifyuserbutton" mnemonicParsing="false" onAction="#handleNotifyUserButton" style="-fx-background-color: black; -fx-font-size: 25; -fx-text-fill: white;" text="Notify User 🔔" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="857.0" layoutY="198.0" prefHeight="421.0" prefWidth="271.0" style="-fx-background-color: black; -fx-background-radius: 20;">
-         <children>
-            <Button fx:id="broadcastmessagebutton" mnemonicParsing="false" onAction="#handleBroadcastMessageButton" style="-fx-background-color: transparent; -fx-font-size: 25; -fx-text-fill: white;" text="Broadcast Message" />
-         </children>
-      </VBox>
+      </HBox>
    </children>
 </AnchorPane>

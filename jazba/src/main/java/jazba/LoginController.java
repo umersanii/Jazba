@@ -8,6 +8,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import java.security.MessageDigest;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class LoginController {
 
     @FXML
@@ -22,36 +28,18 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
-    
-    @FXML
-    public void addHoverEffect(MouseEvent event) {
-        // Add your hover effect logic here
-        System.out.println("Hover effect triggered");
-    }
-    
-
-    @FXML
-    public void showUserMenu(MouseEvent event) {
-        System.out.println("User menu clicked!");
-        // Logic for displaying the user menu
-    }
-    
-    @FXML
-    public void showNotifications(MouseEvent event) {
-        // Your logic for showing notifications
-        System.out.println("Notifications clicked!");
-    }
-    
+    // Database credentials
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/JazbaDB";
+    private static final String DB_USER = "root"; // Replace with your DB username
+    private static final String DB_PASSWORD = "Tabodi123*"; // Replace with your DB password
 
     @FXML
     public void initialize() {
-        System.out.println("Initialize method called");
         loginButton.setOnAction(event -> handleLogin());
         registerButton.setOnAction(event -> handleRegister());
     }
 
     private void handleLogin() {
-        // Gather input values
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -61,19 +49,38 @@ public class LoginController {
             return;
         }
 
-        // Example Login Logic (replace with actual validation logic, e.g., database check)
-        if (username.equals("testuser") && password.equals("password")) {
+        // Hash the password entered by the user
+        String hashedPassword = hashPassword(password);
+
+        // Check credentials against the database
+        if (validateCredentials(username, hashedPassword)) {
             showAlert("Success", "Login successful!");
+            SceneManager.switchScene("MainScene.fxml"); // Navigate to the main scene
         } else {
             showAlert("Error", "Invalid username or password!");
         }
     }
 
+    private boolean validateCredentials(String username, String hashedPassword) {
+        String query = "SELECT * FROM Member WHERE username = ? AND password = ?";
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, hashedPassword);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next(); // Returns true if a matching record is found
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Database connection failed!");
+            return false;
+        }
+    }
+
     private void handleRegister() {
-        // Logic for navigating to the registration scene
-        System.out.println("Navigating to the Registration page...");
-        // Add scene-switching logic here if needed
-        SceneManager.switchScene("Registration.fxml"); // Adjust to your actual registration FXML file name
+        SceneManager.switchScene("Registration.fxml");
     }
 
     private void showAlert(String title, String content) {
@@ -83,5 +90,29 @@ public class LoginController {
         alert.setContentText(content);
         alert.showAndWait();
     }
-}
 
+    private String hashPassword(String password) {
+        try {
+            // SHA-256 hashing
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes());
+
+            // Convert byte array to hex string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Password hashing failed!");
+            return null;
+        }
+    }
+}

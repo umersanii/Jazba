@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="700.0" prefWidth="881.0" style="-fx-background-color: linear-gradient(to bottom, #212121, #0f0f0f);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.ReportsController">
+    <children>
+        <VBox layoutX="150.0" layoutY="50.0" prefHeight="600.0" prefWidth="600.0" spacing="20" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-color: #444; -fx-border-radius: 20; -fx-padding: 20;">
+            <children>
+                <!-- Title -->
+                <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;" text="Reports" />
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #aaaaaa;" text="Generate and view system reports" />
+
+                <!-- Report Type Selection -->
+                <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Select Report Type:" />
+                <ComboBox fx:id="reportTypeComboBox" prefWidth="300.0" style="-fx-background-color: #444; -fx-text-fill: white;" />
+
+                <!-- Generate Report Button -->
+                <Button onAction="#generateReport" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Generate Report" />
+
+                <!-- Report Output Area -->
+                <TextArea fx:id="reportOutputArea" editable="false" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #444; -fx-text-fill: black; -fx-font-family: monospace; -fx-background-radius: 10;" wrapText="true" />
+
+                <!-- Back Button -->
+                <Button onAction="#goBack" style="-fx-background-color: #555; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10;" text="Back" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

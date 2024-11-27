@@ -3,10 +3,13 @@ package jazba;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,13 +37,8 @@ public class UserManagementController {
 
     @FXML
     public void initialize() {
-        // Mock user data
-        allUsers = FXCollections.observableArrayList(
-            new User("1", "Alice", "Premium"),
-            new User("2", "Bob", "Basic"),
-            new User("3", "Charlie", "Premium"),
-            new User("4", "Diana", "Basic")
-        );
+        // Initialize the database connection and populate the user list
+        populateUsersFromDatabase();
 
         // Set up TableView columns
         idColumn.setCellValueFactory(data -> data.getValue().idProperty());
@@ -51,7 +49,7 @@ public class UserManagementController {
         userTableView.setItems(allUsers);
 
         // Add options to filterChoiceBox
-        filterChoiceBox.setItems(FXCollections.observableArrayList("All Users", "Premium Users", "Basic Users"));
+        filterChoiceBox.setItems(FXCollections.observableArrayList("All Users", "Active", "InActive"));
         filterChoiceBox.setValue("All Users");
 
         // Add listener to display user details when a row is selected
@@ -62,6 +60,27 @@ public class UserManagementController {
         });
     }
 
+    private void populateUsersFromDatabase() {
+        allUsers = FXCollections.observableArrayList();
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jazbaDB", "root", "Tabodi123*");
+             Statement statement = connection.createStatement()) {
+
+            String query = "SELECT id, username, membership_status FROM Member";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                allUsers.add(new User(
+                        resultSet.getString("id"),
+                        resultSet.getString("username"),
+                        
+                        resultSet.getString("membership_status")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void applyFilter() {
         String selectedFilter = filterChoiceBox.getValue();
@@ -70,9 +89,9 @@ public class UserManagementController {
         } else {
             List<User> filteredUsers = new ArrayList<>();
             for (User user : allUsers) {
-                if (selectedFilter.equals("Premium Users") && "Premium".equals(user.getMembership())) {
+                if (selectedFilter.equals("Active Users") && "Active".equals(user.getMembership())) {
                     filteredUsers.add(user);
-                } else if (selectedFilter.equals("Basic Users") && "Basic".equals(user.getMembership())) {
+                } else if (selectedFilter.equals("InActive Users") && "InActive".equals(user.getMembership())) {
                     filteredUsers.add(user);
                 }
             }
@@ -81,10 +100,49 @@ public class UserManagementController {
     }
 
     private void displayUserDetails(User user) {
-        // Mock user details
-        String details = String.format("User ID: %s\nName: %s\nMembership: %s\nWorkout Plans: Sample Plan\nAchievements: 5 Badges",
-                user.getId(), user.getName(), user.getMembership());
-        userDetailsArea.setText(details);
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jazbaDB", "root", "Tabodi123*");
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "SELECT * FROM Profile WHERE memberID = ?")) {
+
+            preparedStatement.setInt(1, Integer.parseInt(user.getId()));
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String details = String.format("User ID: %s\nName: %s\nMembership: %s\nHeight: %d\nWeight: %d\nAge: %d\nFitness Level: %s",
+                        user.getId(),
+                        user.getName(),
+                        user.getMembership(),
+                        resultSet.getInt("height"),
+                        resultSet.getInt("weight"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("fitnessLevel")
+                );
+
+                showPopup(details);
+            } else {
+                showPopup("No profile data available for the selected user.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showPopup(String details) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProfilePopup.fxml"));
+            Parent root = loader.load();
+
+            ProfilePopupController controller = loader.getController();
+            controller.setProfileDetails(details);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("User Profile Details");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -93,4 +151,3 @@ public class UserManagementController {
         stage.close();
     }
 }
-

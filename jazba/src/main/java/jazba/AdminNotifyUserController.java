@@ -6,8 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class AdminNotifyUserController {
 
@@ -23,15 +25,58 @@ public class AdminNotifyUserController {
     private ObservableList<String> allUsers;
 
     @FXML
+    private Button applyFilterButton;
+
+    @FXML
     public void initialize() {
-        // Populate the initial list of users
-        allUsers = FXCollections.observableArrayList(
-            "User1 (Premium)", "User2 (Basic)", "User3 (Premium)", "User4 (Basic)"
+        // Initialize the list of users by fetching from the database
+        fetchUsersFromDatabase();
+
+        // Allow multiple selection
+        userListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        // Populate filter choice box
+        ObservableList<String> filterOptions = FXCollections.observableArrayList(
+            "All Users", "Active", "InActive"
         );
-        userListView.setItems(allUsers);
+        filterChoiceBox.setItems(filterOptions);
 
         // Default filter is "All Users"
         filterChoiceBox.setValue("All Users");
+
+        // Set button actions
+        applyFilterButton.setOnAction(event -> applyFilter());
+    }
+
+    private void fetchUsersFromDatabase() {
+        allUsers = FXCollections.observableArrayList();
+
+        // Database connection details
+        String url = "jdbc:mysql://localhost:3306/JazbaDB";
+        String user = "root";
+        String password = "Tabodi123*";
+
+        String sql = "SELECT id, username, membership_status FROM Member";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String username = resultSet.getString("username");
+                String membershipStatus = resultSet.getString("membership_status");
+
+                // Add user information to the list
+                allUsers.add(String.format("%s (ID: %d, %s)", username, id, membershipStatus));
+            }
+
+            userListView.setItems(allUsers);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showErrorAlert("Failed to fetch users from the database: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -40,16 +85,16 @@ public class AdminNotifyUserController {
         if (selectedFilter == null || selectedFilter.equals("All Users")) {
             userListView.setItems(allUsers);
         } else {
-            // Apply filtering based on user type
-            List<String> filteredUsers = new ArrayList<>();
+            // Apply filtering based on membership status
+            ObservableList<String> filteredUsers = FXCollections.observableArrayList();
             for (String user : allUsers) {
-                if (selectedFilter.equals("Premium Users") && user.contains("Premium")) {
+                if (selectedFilter.equals("Active") && user.contains("Active")) {
                     filteredUsers.add(user);
-                } else if (selectedFilter.equals("Basic Users") && user.contains("Basic")) {
+                } else if (selectedFilter.equals("InActive") && user.contains("InActive")) {
                     filteredUsers.add(user);
                 }
             }
-            userListView.setItems(FXCollections.observableArrayList(filteredUsers));
+            userListView.setItems(filteredUsers);
         }
     }
 
@@ -59,21 +104,66 @@ public class AdminNotifyUserController {
         String message = messageArea.getText().trim();
 
         if (selectedUsers.isEmpty() || message.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Please select at least one user and type a message.", ButtonType.OK);
-            alert.showAndWait();
+            showErrorAlert("Please select at least one user and type a message.");
             return;
         }
 
-        // Simulate sending the message (e.g., to a database or API)
-        for (String user : selectedUsers) {
-            System.out.println("Message sent to " + user + ": " + message);
+        // Send messages to the database
+        try {
+            sendMessagesToDatabase(selectedUsers, message);
+
+            // Clear input fields
+            messageArea.clear();
+            userListView.getSelectionModel().clearSelection();
+
+            showInfoAlert("Message sent successfully!");
+        } catch (Exception ex) {
+            showErrorAlert("Failed to send messages: " + ex.getMessage());
+            ex.printStackTrace();
         }
+    }
 
-        // Clear input fields
-        messageArea.clear();
-        userListView.getSelectionModel().clearSelection();
+    private void sendMessagesToDatabase(ObservableList<String> selectedUsers, String message) throws Exception {
+        // Database connection details
+        String url = "jdbc:mysql://localhost:3306/JazbaDB";
+        String user = "root";
+        String password = "Tabodi123*";
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Message sent successfully!", ButtonType.OK);
+        String sql = "INSERT INTO Notification (type, message, timestamp, status, memberID) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            for (String userEntry : selectedUsers) {
+                int memberId = extractMemberIdFromUserEntry(userEntry);
+
+                preparedStatement.setString(1, "Private");
+                preparedStatement.setString(2, message);
+                preparedStatement.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis()));
+                preparedStatement.setString(4, "Unread");
+                preparedStatement.setInt(5, memberId);
+
+                preparedStatement.addBatch();
+            }
+
+            preparedStatement.executeBatch();
+        }
+    }
+
+    private int extractMemberIdFromUserEntry(String userEntry) {
+        // Extract the member ID from the user entry string
+        String[] parts = userEntry.split(",");
+        String idPart = parts[0].substring(parts[0].indexOf("(ID: ") + 5).trim();
+        return Integer.parseInt(idPart);
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
+        alert.showAndWait();
+    }
+
+    private void showInfoAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
         alert.showAndWait();
     }
 
@@ -84,4 +174,3 @@ public class AdminNotifyUserController {
         stage.close();
     }
 }
-

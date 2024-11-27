@@ -42,14 +42,14 @@ public class AdminController {
             Parent root = loader.load();
 
             // Get the current stage (window)
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set the new scene on the current stage
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+          // Get the current stage (window)
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
 
             // Optionally set a title
             stage.setTitle("Broadcast Message");
+            stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,6 +87,64 @@ private void openUserManagement() {
         e.printStackTrace();
     }
 }
+
+@FXML
+private void handleSettings() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Settings");
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+@FXML
+private void handleFeedback() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Feedback.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Feedback");
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+
+@FXML
+private void handleSystemLogs() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SystemLogs.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("System Logs");
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+@FXML
+private void handleReports() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Reports.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("System Logs");
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 
 
 }
