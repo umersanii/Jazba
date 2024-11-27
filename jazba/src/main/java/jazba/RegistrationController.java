@@ -46,7 +46,7 @@ public class RegistrationController {
     // Database credentials
     private static final String DB_URL = "jdbc:mysql://localhost:3306/JazbaDB";
     private static final String DB_USER = "root"; // Your DB username
-    private static final String DB_PASSWORD = "Tabodi123*"; // Your DB password
+    private static final String DB_PASSWORD = "2cool4skool"; // Your DB password
 
     @FXML
     public void initialize() {
@@ -90,10 +90,10 @@ public class RegistrationController {
                 // Register profile data in the Profile table
                 boolean profileAdded = registerProfile(heightValue, weightValue, ageValue, fitnessLevel, memberId);
 
-                if (profileAdded != -1) {
+                if (profileAdded) {
                     showAlert("Success", "Registration completed successfully!");
                 AchievementDAO achievementDAO = new AchievementDAO();
-                achievementDAO.initializeAchievementsForUser(isRegistered); // Initialize achievements for the new user
+                achievementDAO.initializeAchievementsForUser(memberId); // Initialize achievements for the new user
                 } else {
                     showAlert("Error", "Failed to add profile information.");
                 }

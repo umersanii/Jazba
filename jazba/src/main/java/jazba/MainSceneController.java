@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -266,5 +268,11 @@ public class MainSceneController {
         alert.setHeaderText(null);
         alert.setContentText("Create Workout Button Clicked!");
         alert.showAndWait();
+    }
+
+    @FXML
+    private void addHoverEffect(MouseEvent event) {
+        Button button = (Button) event.getSource();
+        button.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
     }
 }

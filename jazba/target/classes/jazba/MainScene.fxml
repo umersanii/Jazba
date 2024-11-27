@@ -39,7 +39,7 @@
       <!-- Workout Buttons -->
       <VBox alignment="CENTER" layoutX="69.0" layoutY="214.0" prefHeight="174.0" prefWidth="298.0" style="-fx-background-color: black; -fx-background-radius: 20;">
          <children>
-            <Button fx:id="CreateWorkoutButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleCreateWorkout" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Create Workout" />
+            <Button fx:id="CreateWorkoutButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Create Workout" />
          </children>
       </VBox>
       <VBox alignment="CENTER" layoutX="69.0" layoutY="417.0" prefHeight="174.0" prefWidth="298.0" style="-fx-background-color: black; -fx-background-radius: 20;">
@@ -189,12 +189,12 @@
       <Label layoutX="953.0" layoutY="606.0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px;" text="View Stats" textAlignment="CENTER" />
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="619.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@resources/medal.png" />
+            <Image url="@../../../../Downloads/medal.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="53.0" fitWidth="40.0" layoutX="1056.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@resources/bar-chart.png" />
+            <Image url="@../../../../Downloads/bar-chart.png" />
          </image>
       </ImageView>
    </children>

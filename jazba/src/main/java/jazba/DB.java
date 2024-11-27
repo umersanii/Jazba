@@ -9,7 +9,7 @@ public class DB {
 
     private static final String URL = "jdbc:mysql://localhost:3306/";
     private static final String USER = "root"; // Change to your MySQL username
-    private static final String PASSWORD = "Tabodi123*"; // Change to your MySQL password
+    private static final String PASSWORD = "2cool4skool"; // Change to your MySQL password
     private static final String DB_NAME = "JazbaDB";
 
     public static Connection connectToDB() {
