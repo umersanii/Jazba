@@ -65,7 +65,7 @@
                      <children>
                         <ImageView fx:id="badge1" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
-                              <Image url="@weights.png" />
+                              <Image url="/resources/weights.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="25.0" />
