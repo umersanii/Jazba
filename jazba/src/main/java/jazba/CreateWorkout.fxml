@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?> <!-- Import for TextField -->
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,45 +12,53 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ListView?>
 
+
+
+<!-- Import for TextField -->
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1369.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.CreateWorkoutController">
    <children>
       <!-- Navigation Bar -->
       <HBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;">
          <children>
             <Label alignment="CENTER" prefHeight="130.0" prefWidth="108.0" style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-family: Sans-serif;" text="Jazba" />
-            <VBox alignment="CENTER" prefHeight="106.0" prefWidth="71.0" style="-fx-background-color: white;">
+            <VBox alignment="CENTER" prefHeight="106.0" prefWidth="71.0" style="-fx-background-color: black; -fx-background-color: ; -fx-background-color: ;">
                <children>
                   <ImageView fitHeight="91.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@dumbbell.png" />
                      </image>
+                     <effect>
+                        <BoxBlur />
+                     </effect>
                   </ImageView>
                </children>
             </VBox>
             <Region prefHeight="130.0" prefWidth="149.0" />
-            <Button fx:id="overviewButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-background-radius: 20; -fx-text-fill: white; -fx-border-color: transparent; -fx-font-size: 14px;" text="Overview"/>
-            <Button fx:id="logsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Logs"/>
-            <Button fx:id="achievementsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Achievements"/>
-            <Button fx:id="statsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Stats"/>
+            <Button fx:id="overviewButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-background-radius: 20; -fx-text-fill: white; -fx-border-color: transparent; -fx-font-size: 14px;" text="Overview" />
+            <Button fx:id="logsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Logs" />
+            <Button fx:id="achievementsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Achievements" />
+            <Button fx:id="statsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Stats" />
             <Region prefHeight="130.0" prefWidth="120.0" />
-            <Label fx:id="notificationBell" alignment="CENTER" prefHeight="43.0" prefWidth="55.0" style="-fx-font-size: 30px; -fx-text-fill: #212121;" text="🔔" />
-            <Label fx:id="userLabel" prefHeight="20.0" prefWidth="76.0" style="-fx-font-size: 14px; -fx-text-fill: white;" text="Name ▼"/>
+            <Label fx:id="notificationBell" alignment="CENTER" prefHeight="43.0" prefWidth="55.0" style="-fx-font-size: 30px; -fx-text-fill: #212121;" text="🔔" textFill="#dacbcb" />
+            <Label fx:id="userLabel" prefHeight="20.0" prefWidth="76.0" style="-fx-font-size: 14px; -fx-text-fill: white;" text="Name ▼" />
          </children>
       </HBox>
 
-      <!-- Content Area -->
-      <VBox fx:id="exerciseBox" layoutY="200.0" spacing="20.0" alignment="TOP_CENTER" style="-fx-padding: 20;" prefWidth="1369.0">
+      <!-- Content Area (starts below the navigation bar) -->
+      <VBox fx:id="exerciseBox" alignment="TOP_CENTER" layoutY="140.0" prefWidth="1369.0" spacing="20.0" style="-fx-padding: 20;">
          <children>
-            <!-- Workout Preset Name Field -->
-            <TextField fx:id="workoutNameField" promptText="Enter Workout Name" style="-fx-font-size: 16px; -fx-text-fill: black;" prefWidth="300.0" />
-
             <!-- Add Exercise Button -->
-            <Button fx:id="addExerciseButton" text="Add Exercise" style="-fx-background-color: #00FF00; -fx-font-size: 16px; -fx-text-fill: black;" onAction="#onAddExerciseClicked"/>
-            <Button fx:id="saveWorkoutPresetButton" text="Save Workout Preset" onAction="#onSaveWorkoutPresetClicked"/>
-
-            <!-- Exercise List -->
-            <ListView fx:id="exerciseList" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #212121; -fx-text-fill: white;" />
+            <Button fx:id="addExerciseButton" onAction="#onAddExerciseClicked" style="-fx-background-color: #00FF00; -fx-font-size: 16px; -fx-text-fill: black;" text="Add Exercise" />
+            <Button fx:id="saveWorkoutPresetButton" onAction="#onSaveWorkoutPresetClicked" text="Save Workout Preset" />
+            
+            <!-- Workout Preset Name Field -->
+            <TextField fx:id="workoutNameField" prefWidth="300.0" promptText="Enter Workout Name" style="-fx-font-size: 16px; -fx-text-fill: black;" />
+            
+            <!-- ListView for displaying exercises -->
+            <ListView fx:id="exerciseList" prefHeight="400.0" prefWidth="800.0" />
          </children>
       </VBox>
+
    </children>
 </AnchorPane>

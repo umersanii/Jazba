@@ -12,7 +12,7 @@ public class UserDAO {
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "2cool4skool";
 
-public static int getUserIDByEmailOrUsername(String emailOrUsername) {
+public int getUserIDByEmailOrUsername(String emailOrUsername) {
     String query = "SELECT userID FROM memberID WHERE email = ? OR username = ?";
     
     try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);

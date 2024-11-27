@@ -1,6 +1,7 @@
 package jazba;
 
 public class Exercise {
+    private int id;
 
     private String name;
     private String muscleGroups;
@@ -11,7 +12,8 @@ public class Exercise {
     private int sets;
     private int reps;
     private double weight;
-    private Integer memberId;  // MemberId can be null
+    private Integer memberId;
+    private int workoutPresetID;  // MemberId can be null
 
     public Exercise(String name, String muscleGroups, String description, String equipment, int difficulty, 
                     String instructions, int sets, int reps, double weight) {
@@ -28,6 +30,9 @@ public class Exercise {
 
     
     // Getter and Setter methods
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -112,4 +117,16 @@ public class Exercise {
       
         return this.muscleGroups;
     }
+
+
+    public void setId(int int1) {
+        this.id = int1;
+    }
+
+
+    public void setWorkoutPresetId(int int1) {
+       this.workoutPresetID = int1;
+        }
+
+
 }

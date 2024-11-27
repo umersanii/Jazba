@@ -1,24 +1,31 @@
 package jazba;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class WorkoutPreset {
     private int id;
     private String name;
-    private String description;
-    private String targetMuscles;
-    private int repetitions;
-    private String exercises;
-    private int memberId;  // Assuming the member ID is available
+    private List<Exercise> exercises;
 
-    // Constructor
-    public WorkoutPreset(String name, String description, String targetMuscles, int repetitions, String exercises, int memberId) {
+    public WorkoutPreset(String name) {
         this.name = name;
-        this.description = description;
-        this.targetMuscles = targetMuscles;
-        this.repetitions = repetitions;
-        this.exercises = exercises;
-        this.memberId = memberId;
+        this.exercises = new ArrayList<>();
     }
 
-    // Getters and setters
+    public WorkoutPreset(String name2, String description, List<Exercise> exercises2) {
+        this.name = name2;
+        this.exercises = exercises2;
+
+    }
+
+    public WorkoutPreset(int id, String name2, String description, List<Exercise> exercises2) {
+        this.name = name2;
+        this.exercises = exercises2;
+        this.id = id;
+
+    }
+
     public int getId() {
         return id;
     }
@@ -26,7 +33,6 @@ public class WorkoutPreset {
     public void setId(int id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
@@ -35,43 +41,13 @@ public class WorkoutPreset {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getTargetMuscles() {
-        return targetMuscles;
-    }
-
-    public void setTargetMuscles(String targetMuscles) {
-        this.targetMuscles = targetMuscles;
-    }
-
-    public int getRepetitions() {
-        return repetitions;
-    }
-
-    public void setRepetitions(int repetitions) {
-        this.repetitions = repetitions;
-    }
-
-    public String getExercises() {
+    public List<Exercise> getExercises() {
         return exercises;
     }
 
-    public void setExercises(String exercises) {
-        this.exercises = exercises;
+    public void addExercise(Exercise exercise) {
+        this.exercises.add(exercise);
     }
 
-    public int getMemberId() {
-        return memberId;
-    }
 
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
-    }
 }

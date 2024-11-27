@@ -14,6 +14,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class RegistrationController {
 
+    private RegistrationDAO registrationDAO = new RegistrationDAO();
+
     @FXML
     private TextField usernameField;
 
@@ -88,8 +90,10 @@ public class RegistrationController {
                 // Register profile data in the Profile table
                 boolean profileAdded = registerProfile(heightValue, weightValue, ageValue, fitnessLevel, memberId);
 
-                if (profileAdded) {
+                if (profileAdded != -1) {
                     showAlert("Success", "Registration completed successfully!");
+                AchievementDAO achievementDAO = new AchievementDAO();
+                achievementDAO.initializeAchievementsForUser(isRegistered); // Initialize achievements for the new user
                 } else {
                     showAlert("Error", "Failed to add profile information.");
                 }
