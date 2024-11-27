@@ -9,7 +9,7 @@ public class RegistrationDAO {
     private static final String PASSWORD = "2cool4skool";
 
     // Method to register a new user
-    public boolean registerUser(String username, String email, String password, int height, int weight, int age, String fitnessLevel) {
+    public Integer registerUser(String username, String email, String password, int height, int weight, int age, String fitnessLevel) {
         String memberQuery = "INSERT INTO member (username, email, password, membership_status, registration_date) VALUES (?, ?, ?, false, NOW())";
         String profileQuery = "INSERT INTO profile (height, weight, age, fitnesslevel, memberID) VALUES (?, ?, ?, ?, ?)";
 
@@ -27,7 +27,7 @@ public class RegistrationDAO {
 
                 if (rowsAffected == 0) {
                     conn.rollback();
-                    return false; // Insertion failed
+                    return -1; // Insertion failed
                 }
 
                 // Retrieve the auto-generated memberID from the member table
@@ -49,7 +49,7 @@ public class RegistrationDAO {
                     if (profileRowsAffected > 0) {
                         // Commit the transaction
                         conn.commit();
-                        return true; // Registration successful
+                        return memberID; // Registration successful
                     }
                 }
 
@@ -62,6 +62,6 @@ public class RegistrationDAO {
             e.printStackTrace();
         }
 
-        return false; // Registration failed
+        return -1; // Registration failed
     }
 }

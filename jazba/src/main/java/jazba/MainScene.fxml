@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -64,7 +63,7 @@
                   <!-- First row of badges -->
                   <HBox prefHeight="63.0" prefWidth="298.0">
                      <children>
-                        <ImageView fx:id="badgeFirst" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge1" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -72,7 +71,7 @@
                               <Insets left="25.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="badgeSecond" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge2" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -80,7 +79,7 @@
                               <Insets left="50.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="badgeThird" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge3" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -96,7 +95,7 @@
                   <!-- Second row of badges -->
                   <HBox prefHeight="63.0" prefWidth="298.0">
                      <children>
-                        <ImageView fx:id="badgeFourth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge4" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -104,7 +103,7 @@
                               <Insets left="25.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="badgeFifth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge5" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -112,7 +111,7 @@
                               <Insets left="50.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="badgeSixth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge6" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -125,7 +124,7 @@
                   <!-- Third row of badges (badges 7-9) -->
                   <HBox prefHeight="63.0" prefWidth="298.0">
                      <children>
-                        <ImageView fx:id="badgeSeventh" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge7" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -133,7 +132,7 @@
                               <Insets left="25.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="badgeEighth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge8" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -141,7 +140,7 @@
                               <Insets left="50.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="badgeNinth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge9" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -150,15 +149,11 @@
                            </HBox.margin>
                         </ImageView>
                      </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
                   </HBox>
-
-                  <!-- Fourth row of badges (badges 10-12) -->
+               <!-- Fourth row of badges (badges 10-12) -->
                   <HBox prefHeight="63.0" prefWidth="298.0">
                      <children>
-                        <ImageView fx:id="badgeTenth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge10" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -166,7 +161,7 @@
                               <Insets left="25.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="badgeEleventh" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge11" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -174,7 +169,7 @@
                               <Insets left="50.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="badgeTwelfth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                        <ImageView fx:id="badge12" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
@@ -184,11 +179,9 @@
                         </ImageView>
                      </children>
                   </HBox>
-
                </children>
             </VBox>
          </children>
       </VBox>
    </children>
-
 </AnchorPane>

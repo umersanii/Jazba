@@ -71,10 +71,12 @@ public class RegistrationController {
             int ageValue = Integer.parseInt(age);
 
             // Call DAO to register the user
-            boolean isRegistered = registrationDAO.registerUser(username, email, password, heightValue, weightValue, ageValue, fitnessLevel);
+            Integer isRegistered = registrationDAO.registerUser(username, email, password, heightValue, weightValue, ageValue, fitnessLevel);
 
-            if (isRegistered) {
+            if (isRegistered != -1) {
                 showAlert("Success", "Registration completed successfully!");
+                AchievementDAO achievementDAO = new AchievementDAO();
+                achievementDAO.initializeAchievementsForUser(isRegistered); // Initialize achievements for the new user
                 // Navigate to the login screen or another page
                 SceneManager.switchScene("Login.fxml"); // Adjust to your actual login FXML file name
             } else {
