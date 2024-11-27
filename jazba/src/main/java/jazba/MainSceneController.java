@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 
 public class MainSceneController {
@@ -61,11 +63,106 @@ public class MainSceneController {
     private Node badgeFirst;
 
     // Hover effect for buttons or UI elements
-    @FXML
-    public void addHoverEffect(MouseEvent event) {
-        // Add your hover effect logic here
-        System.out.println("Hover effect triggered");
+@FXML
+public void handleImageHover(MouseEvent event) {
+    // Get the source of the mouse event (the node that was hovered)
+    Node source = (Node) event.getSource();
+    
+    // Create a new tooltip for each badge
+    Tooltip tooltip = new Tooltip();
+    
+    // Install the tooltip to the hovered node (badge)
+    Tooltip.install(source, tooltip);
+    tooltip.setStyle("-fx-background-color: black; -fx-text-fill: yellow; -fx-font-size: 14px; -fx-font-family: 'Arial';");
+
+
+    // Set the tooltip properties based on the hovered badge
+    switch (source.getId()) {
+        case "badgeFirst":
+            tooltip.setText("First Steps");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Complete your first workout!"));
+            break;
+        case "badgeSecond":
+            tooltip.setText("Consistency is Key");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Log workouts for 7 consecutive days. You're on a roll!"));
+            break;
+        case "badgeThird":
+            tooltip.setText("Beast Mode");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Lift a total of 5000 kgs across all workouts. Strength unleashed!"));
+
+            break;
+        case "badgeFourth":
+            tooltip.setText("Cold Sweat");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Log a total of 1000 reps. Keep the heart reps ip!"));
+            break;
+        case "badgeFifth":
+            tooltip.setText("Iron Addict");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Bench press your body weight. True dedication!"));
+            break;
+        case "badgeSixth":
+            tooltip.setText("Marathon Mentality");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Work out for 30 consecutive days. A champion in the making!"));
+            break;
+        case "badgeSeventh":
+            tooltip.setText("Variety is the Spice of Fitness");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Try 10 different exercises. Explore and conquer!"));
+            break;
+        case "badgeEighth":
+            tooltip.setText("Milestone Master");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Log 100 workouts. Perseverance pays off!"));
+            break;
+        case "badgeNinth":
+            tooltip.setText("The Beast Within");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Achieve Deadlift of 100kg, Squat of 80kg and Bench Press of 60kg. You're a beast!"));
+            break;
+            case "badgeTenth":
+            tooltip.setText("Powerhouse");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Complete a total of 200 sets across all exercises. Power through your workouts!"));
+            break;
+        case "badgeEleventh":
+            tooltip.setText("Milestone Master");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Log 100 workouts. Perseverance pays off!"));
+            break;
+        case "badgeTwelfth":
+            tooltip.setText("Hall of Fame");
+            tooltip.setContentDisplay(ContentDisplay.BOTTOM);
+            tooltip.setGraphic(new Label("Achieve all achievements. The ultimate fitness legend!"));
+            break;
+        default:
+            tooltip.setText("Achievement unlocked!");
+            tooltip.setStyle("-fx-background-color: yellow; -fx-text-fill: black; -fx-font-size: 14px;");
+            break;
     }
+
+    // Show the tooltip when the mouse is entered and hide it when mouse exits
+    source.setOnMouseEntered(e -> {
+        tooltip.show(source, e.getScreenX() + 10, e.getScreenY() + 10);
+    });
+
+    source.setOnMouseExited(e -> {
+        tooltip.hide();
+    });
+}
+
+    
+    @FXML
+    public void handleImageExit(MouseEvent event) {
+        Node source = (Node) event.getSource();
+        Tooltip.uninstall(source, null); // Remove tooltip on exit
+    }
+    
+
 
     @FXML
     private void handleLogWorkout(ActionEvent event) {
@@ -90,6 +187,13 @@ public class MainSceneController {
     @FXML
     private void initialize() {
         // Ensure the login button is properly loaded from FXML
+        if (badgeFirst != null) {
+            Tooltip tooltip = new Tooltip("First Steps\nComplete your first workout.");
+            Tooltip.install(badgeFirst, tooltip);
+            System.out.println("Tooltip installed for badgeFirst.");
+        } else {
+            System.out.println("badgeFirst is null!");
+        }
         Tooltip.install(badgeFirst, new Tooltip("First Steps\nComplete your first workout. A journey of a thousand miles begins with a single step!"));
         Tooltip.install(badgeSecond, new Tooltip("Consistency is Key\nLog workouts for 7 consecutive days. You're on a roll!"));
         Tooltip.install(badgeThird, new Tooltip("Beast Mode\nLift a total of 10,000 lbs across all workouts. Strength unleashed!"));

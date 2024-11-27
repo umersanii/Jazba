@@ -13,11 +13,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="1308.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.MainSceneController">
    <children>
-      <!-- Top Navigation Bar -->
       <HBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;">
          <children>
             <Label alignment="CENTER" prefHeight="130.0" prefWidth="108.0" style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-family: Sans-serif;" text="Jazba" />
-            <VBox alignment="CENTER" prefHeight="106.0" prefWidth="71.0" style="-fx-background-color: white; -fx-background-radius: 50%;">
+            <VBox alignment="CENTER" prefHeight="106.0" prefWidth="71.0" style="-fx-background-color: white;">
                <children>
                   <ImageView fitHeight="91.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -26,69 +25,170 @@
                   </ImageView>
                </children>
             </VBox>
-            <Region prefWidth="149.0" />
-            <Button fx:id="overviewButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-font-size: 14px;" text="Overview" />
-            <Button fx:id="logsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-font-size: 14px;" text="Logs" />
-            <Button fx:id="achievementsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-font-size: 14px;" text="Achievements" />
-            <Button fx:id="statsButton" mnemonicParsing="false" onAction="#navigateToStatsPage" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-font-size: 14px;" text="Stats" />
-            <Region prefWidth="120.0" />
-            <Label fx:id="notificationBell" onMouseClicked="#showNotifications" prefHeight="43.0" prefWidth="55.0" style="-fx-font-size: 30px; -fx-text-fill: #212121;" text="🔔" />
+            <Region prefHeight="130.0" prefWidth="149.0" />
+            <FlowPane prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="overviewButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-background-radius: 20; -fx-text-fill: white; -fx-border-color: transparent; -fx-font-size: 14px;" text="Overview" />
+            <Button fx:id="logsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Logs" />
+            <Button fx:id="achievementsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Achievements" />
+            <Button fx:id="statsButton" mnemonicParsing="false" onAction="#navigateToStatsPage" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" text="Stats" />
+            <Region prefHeight="130.0" prefWidth="120.0" />
+            <Label fx:id="notificationBell" alignment="CENTER" onMouseClicked="#showNotifications" prefHeight="43.0" prefWidth="55.0" style="-fx-font-size: 30px; -fx-text-fill: #212121;" text="🔔" />
             <Label fx:id="userLabel" onMouseClicked="#showUserMenu" prefHeight="20.0" prefWidth="76.0" style="-fx-font-size: 14px; -fx-text-fill: white;" text="Name ▼" />
          </children>
       </HBox>
 
-      <!-- Main Content Section -->
-      <HBox alignment="CENTER" layoutY="160.0" spacing="40.0" prefHeight="500.0" prefWidth="1308.0">
+      <!-- Workout Buttons -->
+      <VBox alignment="CENTER" layoutX="69.0" layoutY="214.0" prefHeight="174.0" prefWidth="298.0" style="-fx-background-color: black; -fx-background-radius: 20;">
          <children>
-            <!-- Left Column -->
-            <VBox alignment="CENTER" prefWidth="300.0" spacing="20.0">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="174.0" style="-fx-background-color: black; -fx-background-radius: 20;">
-                     <children>
-                        <Button fx:id="CreateWorkoutButton" onAction="#handleCreateWorkout" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Create Workout" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" prefHeight="174.0" style="-fx-background-color: black; -fx-background-radius: 20;">
-                     <children>
-                        <Button fx:id="LogWorkoutButton" onAction="#handleLogWorkout" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Log a Workout" />
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
+            <Button fx:id="CreateWorkoutButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleCreateWorkout" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Create Workout" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="69.0" layoutY="417.0" prefHeight="174.0" prefWidth="298.0" style="-fx-background-color: black; -fx-background-radius: 20;">
+         <children>
+            <Button fx:id="LogWorkoutButton" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="Log a Workout" />
+         </children>
+      </VBox>
 
-            <!-- Middle Column -->
-            <VBox alignment="CENTER" prefWidth="300.0" spacing="20.0" style="-fx-background-color: black; -fx-background-radius: 20;">
+      <!-- Chart Section -->
+      <VBox layoutX="744.0" layoutY="214.0" prefHeight="377.0" prefWidth="505.0" style="-fx-background-color: black; -fx-background-radius: 20;">
+         <children>
+           <Button fx:id="statsButton" alignment="CENTER" mnemonicParsing="false" onAction="#navigateToStatsPage" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Stats" />
+         </children>
+      </VBox>
+      <!-- Achievements Section -->
+      <VBox alignment="CENTER" layoutX="404.0" layoutY="212.0" prefHeight="377.0" prefWidth="298.0" style="-fx-background-color: black; -fx-background-radius: 20;">
+         <children>
+            <Button fx:id="statsButton1" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#navigateToStatsPage" prefHeight="69.0" prefWidth="298.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Achievements" textFill="WHITE" />
+            <VBox prefHeight="313.0" prefWidth="298.0">
                <children>
-                  <Button fx:id="achievementsOverviewButton" onAction="#navigateToAchievements" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Achievements" />
-                  <FlowPane alignment="CENTER" hgap="10.0" vgap="10.0">
+                  <!-- First row of badges -->
+                  <HBox prefHeight="63.0" prefWidth="298.0">
                      <children>
-                        <ImageView fitHeight="48.0" fitWidth="48.0">
+                        <ImageView fx:id="badgeFirst" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
                         </ImageView>
-                        <ImageView fitHeight="48.0" fitWidth="48.0">
+                        <ImageView fx:id="badgeSecond" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
                         </ImageView>
-                        <ImageView fitHeight="48.0" fitWidth="48.0">
+                        <ImageView fx:id="badgeThird" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
                            <image>
                               <Image url="@weights.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
                         </ImageView>
                      </children>
-                  </FlowPane>
-               </children>
-            </VBox>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <!-- Second row of badges -->
+                  <HBox prefHeight="63.0" prefWidth="298.0">
+                     <children>
+                        <ImageView fx:id="badgeFourth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="badgeFifth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="badgeSixth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <!-- Third row of badges (badges 7-9) -->
+                  <HBox prefHeight="63.0" prefWidth="298.0">
+                     <children>
+                        <ImageView fx:id="badgeSeventh" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="badgeEighth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="badgeNinth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
 
-            <!-- Right Column -->
-            <VBox alignment="CENTER" prefWidth="500.0" spacing="20.0" style="-fx-background-color: black; -fx-background-radius: 20;">
-               <children>
-                  <Button fx:id="statsOverviewButton" onAction="#navigateToStatsPage" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Stats" />
+                  <!-- Fourth row of badges (badges 10-12) -->
+                  <HBox prefHeight="63.0" prefWidth="298.0">
+                     <children>
+                        <ImageView fx:id="badgeTenth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="badgeEleventh" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="badgeTwelfth" fitHeight="48.0" fitWidth="48.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                           <image>
+                              <Image url="@weights.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+
                </children>
             </VBox>
          </children>
-      </HBox>
+      </VBox>
    </children>
+
 </AnchorPane>
