@@ -1,0 +1,310 @@
+
+Jazba2 - Copy/.vscode/settings.json
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/AdminBroadcastController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/AdminController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/AdminNotifyUserController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/CreateWorkoutController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/ExerciseSelectionController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/FeedbackController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/LoginController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/LogWorkoutController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/MainSceneController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/ProfilePopupController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/RegistrationController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/ReportsController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/SettingsController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/StatsPageController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/SystemLogsController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/UserManagementController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/controller/WorkoutExerciseController.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/dao/AchievementDAO.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/dao/createWorkoutPresetDAO.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/dao/LoginDAO.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/dao/LogWorkoutDAO.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/dao/RegistrationDAO.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/dao/StatsDAO.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/dao/UserDAO.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/dao/WorkoutDAO.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/Jazba.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/MainScene.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/models/Achievement.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/models/Exercise.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/models/SceneManager.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/models/User.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/models/UserSession.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/models/Workout.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/models/WorkoutPreset.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/resources/application.css
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/resources/dumbbell (1).png
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/resources/dumbbell.png
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/resources/dumbbell2.png
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/resources/registration.css
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/resources/style.css
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/resources/weights.png
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/utils/DatabaseHelper.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/utils/DB.java
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/Admin.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/AdminBroadcast.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/AdminNotifyUser.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/CreateWorkout.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/ExerciseSelection.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/Feedback.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/Login.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/LogWorkout.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/MainScene.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/Registration.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/Reports.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/Settings.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/StatsPage.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/SystemLogs.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/UserManagement.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/UserProfilePopup.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/jazba/view/WorkoutExercise.fxml
+Jazba2 - Copy/Jazba-main/jazba/src/main/java/module-info.java
+Jazba2 - Copy/pom.xml
+Jazba2 - Copy/README.md
+Jazba2 - Copy/src/main/java/jazba/controller/admin/AdminBroadcastController.java
+Jazba2 - Copy/src/main/java/jazba/controller/admin/AdminController.java
+Jazba2 - Copy/src/main/java/jazba/controller/admin/AdminNotifyUserController.java
+Jazba2 - Copy/src/main/java/jazba/controller/admin/FeedbackController.java
+Jazba2 - Copy/src/main/java/jazba/controller/admin/ProfilePopupController.java
+Jazba2 - Copy/src/main/java/jazba/controller/admin/ReportsController.java
+Jazba2 - Copy/src/main/java/jazba/controller/admin/SystemLogsController.java
+Jazba2 - Copy/src/main/java/jazba/controller/admin/UserManagementController.java
+Jazba2 - Copy/src/main/java/jazba/controller/misc/LoginController.java
+Jazba2 - Copy/src/main/java/jazba/controller/misc/RegistrationController.java
+Jazba2 - Copy/src/main/java/jazba/controller/misc/SettingsController.java
+Jazba2 - Copy/src/main/java/jazba/controller/user/CreateWorkoutController.java
+Jazba2 - Copy/src/main/java/jazba/controller/user/ExerciseSelectionController.java
+Jazba2 - Copy/src/main/java/jazba/controller/user/LogWorkoutController.java
+Jazba2 - Copy/src/main/java/jazba/controller/user/MainSceneController.java
+Jazba2 - Copy/src/main/java/jazba/controller/user/StatsPageController.java
+Jazba2 - Copy/src/main/java/jazba/controller/user/WorkoutExerciseController.java
+Jazba2 - Copy/src/main/java/jazba/dao/AchievementDAO.java
+Jazba2 - Copy/src/main/java/jazba/dao/createWorkoutPresetDAO.java
+Jazba2 - Copy/src/main/java/jazba/dao/LoginDAO.java
+Jazba2 - Copy/src/main/java/jazba/dao/LogWorkoutDAO.java
+Jazba2 - Copy/src/main/java/jazba/dao/RegistrationDAO.java
+Jazba2 - Copy/src/main/java/jazba/dao/StatsDAO.java
+Jazba2 - Copy/src/main/java/jazba/dao/UserDAO.java
+Jazba2 - Copy/src/main/java/jazba/dao/WorkoutDAO.java
+Jazba2 - Copy/src/main/java/jazba/Jazba.java
+Jazba2 - Copy/src/main/java/jazba/models/Achievement.java
+Jazba2 - Copy/src/main/java/jazba/models/Exercise.java
+Jazba2 - Copy/src/main/java/jazba/models/Notification.java
+Jazba2 - Copy/src/main/java/jazba/models/SceneManager.java
+Jazba2 - Copy/src/main/java/jazba/models/User.java
+Jazba2 - Copy/src/main/java/jazba/models/UserSession.java
+Jazba2 - Copy/src/main/java/jazba/models/Workout.java
+Jazba2 - Copy/src/main/java/jazba/models/WorkoutPreset.java
+Jazba2 - Copy/src/main/java/jazba/populate.py
+Jazba2 - Copy/src/main/java/jazba/resources/css/registration.css
+Jazba2 - Copy/src/main/java/jazba/resources/css/style.css
+Jazba2 - Copy/src/main/java/jazba/resources/dumbbell (1).png
+Jazba2 - Copy/src/main/java/jazba/resources/dumbbell2.png
+Jazba2 - Copy/src/main/java/jazba/resources/weights.png
+Jazba2 - Copy/src/main/java/jazba/utils/DatabaseHelper.java
+Jazba2 - Copy/src/main/java/jazba/utils/DB.java
+Jazba2 - Copy/src/main/java/jazba/view/admin/Admin.fxml
+Jazba2 - Copy/src/main/java/jazba/view/admin/AdminBroadcast.fxml
+Jazba2 - Copy/src/main/java/jazba/view/admin/AdminNotifyUser.fxml
+Jazba2 - Copy/src/main/java/jazba/view/admin/Reports.fxml
+Jazba2 - Copy/src/main/java/jazba/view/admin/Settings.fxml
+Jazba2 - Copy/src/main/java/jazba/view/admin/SystemLogs.fxml
+Jazba2 - Copy/src/main/java/jazba/view/admin/UserManagement.fxml
+Jazba2 - Copy/src/main/java/jazba/view/admin/UserProfilePopup.fxml
+Jazba2 - Copy/src/main/java/jazba/view/Feedback.fxml
+Jazba2 - Copy/src/main/java/jazba/view/Login.fxml
+Jazba2 - Copy/src/main/java/jazba/view/Registration.fxml
+Jazba2 - Copy/src/main/java/jazba/view/user/application.css
+Jazba2 - Copy/src/main/java/jazba/view/user/CreateWorkout.fxml
+Jazba2 - Copy/src/main/java/jazba/view/user/dumbbell.png
+Jazba2 - Copy/src/main/java/jazba/view/user/ExerciseSelection.fxml
+Jazba2 - Copy/src/main/java/jazba/view/user/logo.png
+Jazba2 - Copy/src/main/java/jazba/view/user/LogWorkout.fxml
+Jazba2 - Copy/src/main/java/jazba/view/user/MainScene.fxml
+Jazba2 - Copy/src/main/java/jazba/view/user/StatsPage.fxml
+Jazba2 - Copy/src/main/java/jazba/view/WorkoutExercise.fxml
+Jazba2 - Copy/src/main/java/module-info.java
+Jazba2 - Copy/target/classes/jazba/populate.py
+Jazba2 - Copy/target/classes/jazba/resources/css/registration.css
+Jazba2 - Copy/target/classes/jazba/resources/css/style.css
+Jazba2 - Copy/target/classes/jazba/resources/dumbbell (1).png
+Jazba2 - Copy/target/classes/jazba/resources/dumbbell2.png
+Jazba2 - Copy/target/classes/jazba/resources/weights.png
+Jazba2 - Copy/target/classes/jazba/view/admin/Admin.fxml
+Jazba2 - Copy/target/classes/jazba/view/admin/AdminBroadcast.fxml
+Jazba2 - Copy/target/classes/jazba/view/admin/AdminNotifyUser.fxml
+Jazba2 - Copy/target/classes/jazba/view/admin/Reports.fxml
+Jazba2 - Copy/target/classes/jazba/view/admin/Settings.fxml
+Jazba2 - Copy/target/classes/jazba/view/admin/SystemLogs.fxml
+Jazba2 - Copy/target/classes/jazba/view/admin/UserManagement.fxml
+Jazba2 - Copy/target/classes/jazba/view/admin/UserProfilePopup.fxml
+Jazba2 - Copy/target/classes/jazba/view/Feedback.fxml
+Jazba2 - Copy/target/classes/jazba/view/Login.fxml
+Jazba2 - Copy/target/classes/jazba/view/Registration.fxml
+Jazba2 - Copy/target/classes/jazba/view/user/application.css
+Jazba2 - Copy/target/classes/jazba/view/user/CreateWorkout.fxml
+Jazba2 - Copy/target/classes/jazba/view/user/dumbbell.png
+Jazba2 - Copy/target/classes/jazba/view/user/ExerciseSelection.fxml
+Jazba2 - Copy/target/classes/jazba/view/user/logo.png
+Jazba2 - Copy/target/classes/jazba/view/user/LogWorkout.fxml
+Jazba2 - Copy/target/classes/jazba/view/user/MainScene.fxml
+Jazba2 - Copy/target/classes/jazba/view/user/StatsPage.fxml
+Jazba2 - Copy/target/classes/jazba/view/WorkoutExercise.fxml
+Jazba2/.vscode/settings.json
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/AdminBroadcastController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/AdminController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/AdminNotifyUserController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/CreateWorkoutController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/ExerciseSelectionController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/FeedbackController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/LoginController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/LogWorkoutController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/MainSceneController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/ProfilePopupController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/RegistrationController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/ReportsController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/SettingsController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/StatsPageController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/SystemLogsController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/UserManagementController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/controller/WorkoutExerciseController.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/dao/AchievementDAO.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/dao/createWorkoutPresetDAO.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/dao/LoginDAO.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/dao/LogWorkoutDAO.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/dao/RegistrationDAO.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/dao/StatsDAO.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/dao/UserDAO.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/dao/WorkoutDAO.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/Jazba.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/MainScene.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/models/Achievement.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/models/Exercise.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/models/SceneManager.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/models/User.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/models/UserSession.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/models/Workout.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/models/WorkoutPreset.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/resources/application.css
+Jazba2/Jazba-main/jazba/src/main/java/jazba/resources/dumbbell (1).png
+Jazba2/Jazba-main/jazba/src/main/java/jazba/resources/dumbbell.png
+Jazba2/Jazba-main/jazba/src/main/java/jazba/resources/dumbbell2.png
+Jazba2/Jazba-main/jazba/src/main/java/jazba/resources/registration.css
+Jazba2/Jazba-main/jazba/src/main/java/jazba/resources/style.css
+Jazba2/Jazba-main/jazba/src/main/java/jazba/resources/weights.png
+Jazba2/Jazba-main/jazba/src/main/java/jazba/utils/DatabaseHelper.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/utils/DB.java
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/Admin.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/AdminBroadcast.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/AdminNotifyUser.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/CreateWorkout.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/ExerciseSelection.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/Feedback.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/Login.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/LogWorkout.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/MainScene.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/Registration.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/Reports.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/Settings.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/StatsPage.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/SystemLogs.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/UserManagement.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/UserProfilePopup.fxml
+Jazba2/Jazba-main/jazba/src/main/java/jazba/view/WorkoutExercise.fxml
+Jazba2/Jazba-main/jazba/src/main/java/module-info.java
+Jazba2/pom.xml
+Jazba2/README.md
+Jazba2/src/main/java/jazba/controller/admin/AdminBroadcastController.java
+Jazba2/src/main/java/jazba/controller/admin/AdminController.java
+Jazba2/src/main/java/jazba/controller/admin/AdminNotifyUserController.java
+Jazba2/src/main/java/jazba/controller/admin/FeedbackController.java
+Jazba2/src/main/java/jazba/controller/admin/ProfilePopupController.java
+Jazba2/src/main/java/jazba/controller/admin/ReportsController.java
+Jazba2/src/main/java/jazba/controller/admin/SystemLogsController.java
+Jazba2/src/main/java/jazba/controller/admin/UserManagementController.java
+Jazba2/src/main/java/jazba/controller/misc/LoginController.java
+Jazba2/src/main/java/jazba/controller/misc/RegisterUserCommand.java
+Jazba2/src/main/java/jazba/controller/misc/RegistrationController.java
+Jazba2/src/main/java/jazba/controller/misc/RegistrationObserver.java
+Jazba2/src/main/java/jazba/controller/misc/RegistrationService.java
+Jazba2/src/main/java/jazba/controller/misc/SettingsController.java
+Jazba2/src/main/java/jazba/controller/user/CreateWorkoutController.java
+Jazba2/src/main/java/jazba/controller/user/ExerciseSelectionController.java
+Jazba2/src/main/java/jazba/controller/user/LogWorkoutController.java
+Jazba2/src/main/java/jazba/controller/user/MainSceneController.java
+Jazba2/src/main/java/jazba/controller/user/StatsPageController.java
+Jazba2/src/main/java/jazba/controller/user/WorkoutExerciseController.java
+Jazba2/src/main/java/jazba/dao/AchievementDAO.java
+Jazba2/src/main/java/jazba/dao/createWorkoutPresetDAO.java
+Jazba2/src/main/java/jazba/dao/LoginDAO.java
+Jazba2/src/main/java/jazba/dao/LogWorkoutDAO.java
+Jazba2/src/main/java/jazba/dao/RegistrationDAO.java
+Jazba2/src/main/java/jazba/dao/StatsDAO.java
+Jazba2/src/main/java/jazba/dao/UserDAO.java
+Jazba2/src/main/java/jazba/dao/WorkoutDAO.java
+Jazba2/src/main/java/jazba/Jazba.java
+Jazba2/src/main/java/jazba/models/Achievement.java
+Jazba2/src/main/java/jazba/models/Exercise.java
+Jazba2/src/main/java/jazba/models/Notification.java
+Jazba2/src/main/java/jazba/models/SceneManager.java
+Jazba2/src/main/java/jazba/models/User.java
+Jazba2/src/main/java/jazba/models/UserSession.java
+Jazba2/src/main/java/jazba/models/Workout.java
+Jazba2/src/main/java/jazba/models/WorkoutPreset.java
+Jazba2/src/main/java/jazba/populate.py
+Jazba2/src/main/java/jazba/resources/css/registration.css
+Jazba2/src/main/java/jazba/resources/css/style.css
+Jazba2/src/main/java/jazba/resources/dumbbell (1).png
+Jazba2/src/main/java/jazba/resources/dumbbell2.png
+Jazba2/src/main/java/jazba/resources/weights.png
+Jazba2/src/main/java/jazba/utils/DatabaseHelper.java
+Jazba2/src/main/java/jazba/utils/DB.java
+Jazba2/src/main/java/jazba/view/admin/Admin.fxml
+Jazba2/src/main/java/jazba/view/admin/AdminBroadcast.fxml
+Jazba2/src/main/java/jazba/view/admin/AdminNotifyUser.fxml
+Jazba2/src/main/java/jazba/view/admin/Reports.fxml
+Jazba2/src/main/java/jazba/view/admin/Settings.fxml
+Jazba2/src/main/java/jazba/view/admin/SystemLogs.fxml
+Jazba2/src/main/java/jazba/view/admin/UserManagement.fxml
+Jazba2/src/main/java/jazba/view/admin/UserProfilePopup.fxml
+Jazba2/src/main/java/jazba/view/Feedback.fxml
+Jazba2/src/main/java/jazba/view/Login.fxml
+Jazba2/src/main/java/jazba/view/Registration.fxml
+Jazba2/src/main/java/jazba/view/user/application.css
+Jazba2/src/main/java/jazba/view/user/CreateWorkout.fxml
+Jazba2/src/main/java/jazba/view/user/dumbbell.png
+Jazba2/src/main/java/jazba/view/user/ExerciseSelection.fxml
+Jazba2/src/main/java/jazba/view/user/logo.png
+Jazba2/src/main/java/jazba/view/user/LogWorkout.fxml
+Jazba2/src/main/java/jazba/view/user/MainScene.fxml
+Jazba2/src/main/java/jazba/view/user/StatsPage.fxml
+Jazba2/src/main/java/jazba/view/WorkoutExercise.fxml
+Jazba2/src/main/java/module-info.java
+Jazba2/target/classes/jazba/populate.py
+Jazba2/target/classes/jazba/resources/css/registration.css
+Jazba2/target/classes/jazba/resources/css/style.css
+Jazba2/target/classes/jazba/resources/dumbbell (1).png
+Jazba2/target/classes/jazba/resources/dumbbell2.png
+Jazba2/target/classes/jazba/resources/weights.png
+Jazba2/target/classes/jazba/view/admin/Admin.fxml
+Jazba2/target/classes/jazba/view/admin/AdminBroadcast.fxml
+Jazba2/target/classes/jazba/view/admin/AdminNotifyUser.fxml
+Jazba2/target/classes/jazba/view/admin/Reports.fxml
+Jazba2/target/classes/jazba/view/admin/Settings.fxml
+Jazba2/target/classes/jazba/view/admin/SystemLogs.fxml
+Jazba2/target/classes/jazba/view/admin/UserManagement.fxml
+Jazba2/target/classes/jazba/view/admin/UserProfilePopup.fxml
+Jazba2/target/classes/jazba/view/Feedback.fxml
+Jazba2/target/classes/jazba/view/Login.fxml
+Jazba2/target/classes/jazba/view/Registration.fxml
+Jazba2/target/classes/jazba/view/user/application.css
+Jazba2/target/classes/jazba/view/user/CreateWorkout.fxml
+Jazba2/target/classes/jazba/view/user/dumbbell.png
+Jazba2/target/classes/jazba/view/user/ExerciseSelection.fxml
+Jazba2/target/classes/jazba/view/user/logo.png
+Jazba2/target/classes/jazba/view/user/LogWorkout.fxml
+Jazba2/target/classes/jazba/view/user/MainScene.fxml
+Jazba2/target/classes/jazba/view/user/StatsPage.fxml
+Jazba2/target/classes/jazba/view/WorkoutExercise.fxml
