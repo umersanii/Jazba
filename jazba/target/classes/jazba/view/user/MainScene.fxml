@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragEntered="#addHoverEffect" onMouseDragExited="#addHoverEffect" prefHeight="689.0" prefWidth="1308.0" styleClass="main-scene" stylesheets="@application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.user.MainSceneController">
+
+   <children>
+      <!-- Header Section -->
+      <HBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;">
+         <children>
+            <HBox prefHeight="130.0" prefWidth="1310.0" style="-fx-alignment: center;">
+               <children>
+                  <HBox prefHeight="130.0" prefWidth="215.0" styleClass="container-default">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="120.0" prefWidth="197.0" styleClass="header-label" text="Jazba" />
+                        <ImageView fitHeight="100.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+            </HBox>
+                  <Region prefHeight="130.0" prefWidth="68.0" />
+                  <Button fx:id="overviewButton" alignment="CENTER" mnemonicParsing="false" onAction="#navigateToOverview" prefHeight="40.0" prefWidth="130.0" styleClass="nav-button" text="Overview" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="logsButton" mnemonicParsing="false" onAction="#navigateToLogs" prefHeight="40.0" prefWidth="150.0" styleClass="nav-button" text="Logs" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="achievementsButton" mnemonicParsing="false" onAction="#navigateToCreate" prefHeight="40.0" prefWidth="150.0" styleClass="nav-button" text="Create" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="statsButton" mnemonicParsing="false" onAction="#navigateToStatsPage" prefHeight="40.0" prefWidth="130.0" styleClass="nav-button" text="Stats" />
+                  <Region prefHeight="130.0" prefWidth="200.0" />
+                  <Label fx:id="notificationBell" alignment="CENTER" onMouseEntered="#showNotifications" onMouseExited="#handleImageExit" prefHeight="62.0" prefWidth="74.0" styleClass="notification-bell" text="🔔" />
+                  <VBox prefHeight="110.0" prefWidth="103.0">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="userLabel" onMouseClicked="#showUserMenu" prefHeight="45.0" prefWidth="103.0" styleClass="user-label" text="Name ▼" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+
+      <HBox layoutY="113.0" prefHeight="578.0" prefWidth="1308.0" styleClass="container-default">
+         <children>
+            <VBox alignment="CENTER" prefHeight="568.0" prefWidth="395.0" styleClass="container-default">
+               <children>
+                  <HBox prefHeight="263.0" prefWidth="381.0" styleClass="container-default">
+                     <children>
+                        <Button fx:id="CreateWorkoutButton" alignment="CENTER" mnemonicParsing="false" onAction="#navigateToCreateWorkout" prefHeight="226.0" styleClass="workout-button" text="Create Workout" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="261.0" prefWidth="381.0" styleClass="container-default">
+                     <children>
+                        <Button fx:id="LogWorkoutButton" alignment="CENTER" mnemonicParsing="false" onAction="#navigateToLogWorkout" prefHeight="264.0" styleClass="workout-button" text="Log Workout" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+      
+                              <!-- Achievements Section -->
+            <VBox alignment="CENTER" prefHeight="576.0" prefWidth="422.0" styleClass="container-default">
+               <children>
+                  <Button mnemonicParsing="false" styleClass="achievements-button">
+                     <graphic>
+                        <VBox prefHeight="514.0" prefWidth="392.0" styleClass="achievements-container">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="117.0" prefWidth="388.0" style="-fx-font-size: 25; -fx-font-weight: bold; -fx-text-fill: #FFD700;" text="Achievements" />
+                              <VBox prefHeight="458.0" prefWidth="278.0" style="-fx-padding: 10;">
+                                 <children>
+                                    <!-- First row of badges -->
+                                    <HBox prefHeight="94.0" prefWidth="92.0" styleClass="badge-row">
+                                       <children>
+                                          <ImageView fx:id="badge1" fitHeight="72.0" fitWidth="70.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="25.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <ImageView fx:id="badge2" fitHeight="72.0" fitWidth="70.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <ImageView fx:id="badge3" fitHeight="72.0" fitWidth="70.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <!-- Second row of badges -->
+                                    <HBox prefHeight="85.0" prefWidth="392.0" styleClass="badge-row">
+                                       <children>
+                                          <ImageView fx:id="badge4" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="25.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <ImageView fx:id="badge5" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <ImageView fx:id="badge6" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit" styleClass="image-badge">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <!-- Third row of badges (badges 7-9) -->
+                                    <HBox prefHeight="85.0" prefWidth="332.0" styleClass="badge-row">
+                                       <children>
+                                          <ImageView fx:id="badge7" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit" styleClass="image-badge">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="25.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <ImageView fx:id="badge8" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit" styleClass="image-badge">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <ImageView fx:id="badge9" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit" styleClass="image-badge">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="88.0" prefWidth="392.0" styleClass="badge-row">
+                                       <children>
+                                          <ImageView fx:id="badge10" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit" styleClass="image-badge">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="25.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <ImageView fx:id="badge11" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <ImageView fx:id="badge12" fitHeight="72.0" fitWidth="72.0" onMouseEntered="#handleImageHover" onMouseExited="#handleImageExit">
+                                             <image>
+                                                <Image url="@dumbbell.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+      
+                              <!-- Chart Section -->
+<VBox prefHeight="377.0" prefWidth="505.0" styleClass="container-default" stylesheets="@application.css">
+    <children>
+        <Button fx:id="statsButton" alignment="CENTER" mnemonicParsing="false" onAction="#navigateToStatsPage" prefHeight="418.0" prefWidth="452.0" styleClass="stats-button" text="Stats" />
+    </children>
+</VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

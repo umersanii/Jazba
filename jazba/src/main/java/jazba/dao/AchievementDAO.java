@@ -10,8 +10,9 @@ public class AchievementDAO {
 
     // Main function to check and unlock achievements
     public void checkAndUnlockAchievements(int memberId) {
+        System.out.println("achievements unlocked");
         String query = "SELECT SUM(sets) AS totalSets, SUM(reps) AS totalReps, SUM(weight) AS totalWeight, COUNT(DISTINCT exerciseName) AS uniqueExercises, COUNT(*) AS totalWorkouts, MAX(date) AS lastWorkoutDate " +
-                       "FROM state WHERE memberID = ?";
+                       "FROM stats WHERE memberID = ?";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -149,7 +150,7 @@ public class AchievementDAO {
 
     // Check if the user has achieved 30 consecutive workout days (Example, needs date handling logic)
     private boolean isConsecutiveWorkouts(int memberId, int days) {
-        String query = "SELECT date FROM state WHERE memberID = ? ORDER BY date DESC LIMIT ?";
+        String query = "SELECT date FROM stats WHERE memberID = ? ORDER BY date DESC LIMIT ?";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -182,7 +183,7 @@ public class AchievementDAO {
 
     // Get the body weight of the member (for Iron Addict achievement)
     private double getBodyWeight(int memberId) {
-        String query = "SELECT bodyWeight FROM user_profile WHERE memberID = ?";
+        String query = "SELECT weight FROM profile WHERE memberID = ?";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -190,7 +191,7 @@ public class AchievementDAO {
             stmt.setInt(1, memberId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return rs.getDouble("bodyWeight");
+                return rs.getDouble("weight");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -200,7 +201,7 @@ public class AchievementDAO {
 
     // Check if the user has met the Beast Within achievement criteria (for deadlift, squat, bench press)
     private boolean hasAchievedBeastWithin(int memberId) {
-        String query = "SELECT MAX(weight) AS maxWeight FROM state WHERE memberID = ? AND exerciseName IN ('Deadlift', 'Squat', 'Bench Press')";
+        String query = "SELECT MAX(weight) AS maxWeight FROM stats WHERE memberID = ? AND exerciseName IN ('Deadlift', 'Squat', 'Bench Press')";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -240,20 +241,20 @@ public class AchievementDAO {
         // List of default achievements with titles, descriptions, dates, badge references, and unlock status
         Object[][] defaultAchievements = {
             {"First Steps", "Complete your first workout!", "2024-11-27", "badge1", 2, 0},
-            {"Consistency is Key", "Log workouts for 7 consecutive days. You're on a roll!", "2024-11-27", "badge2", 2, 1},
-            {"Beast Mode", "Lift a total of 5000 kgs across all workouts. Strength unleashed!", "2024-11-27", "badge3", 2, 1},
-            {"Cold Sweat", "Log a total of 1000 reps. Keep the heart reps up!", "2024-11-27", "badge4", 2, 1},
+            {"Consistency is Key", "Log workouts for 7 consecutive days. You're on a roll!", "2024-11-27", "badge2", 2, 0},
+            {"Beast Mode", "Lift a total of 5000 kgs across all workouts. Strength unleashed!", "2024-11-27", "badge3", 2, 0},
+            {"Cold Sweat", "Log a total of 1000 reps. Keep the heart reps up!", "2024-11-27", "badge4", 2, 0},
             {"Iron Addict", "Bench press your body weight. True dedication!", "2024-11-27", "badge5", 2, 0},
-            {"Marathon Mentality", "Work out for 30 consecutive days. A champion in the making!", "2024-11-27", "badge6", 2, 1},
-            {"Variety is the Spice of Fitness", "Try 10 different exercises. Explore and conquer!", "2024-11-27", "badge7", 2, 1},
-            {"Milestone Master", "Log 100 workouts. Perseverance pays off!", "2024-11-27", "badge8", 2, 1},
-            {"The Beast Within", "Achieve Deadlift of 100kg, Squat of 80kg and Bench Press of 60kg. You're a beast!", "2024-11-27", "badge9", 2, 1},
-            {"Powerhouse", "Complete a total of 200 sets across all exercises. Power through your workouts!", "2024-11-27", "badge10", 2, 1},
-            {"Milestone Master", "Log 100 workouts. Perseverance pays off!", "2024-11-27", "badge11", 2, 1},
-            {"Hall of Fame", "Achieve all achievements. The ultimate fitness legend!", "2024-11-27", "badge12", 2, 1}
+            {"Marathon Mentality", "Work out for 30 consecutive days. A champion in the making!", "2024-11-27", "badge6", 2, 0},
+            {"Variety is the Spice of Fitness", "Try 10 different exercises. Explore and conquer!", "2024-11-27", "badge7", 2, 0},
+            {"Milestone Master", "Log 100 workouts. Perseverance pays off!", "2024-11-27", "badge8", 2, 0},
+            {"The Beast Within", "Achieve Deadlift of 100kg, Squat of 80kg and Bench Press of 60kg. You're a beast!", "2024-11-27", "badge9", 2, 0},
+            {"Powerhouse", "Complete a total of 200 sets across all exercises. Power through your workouts!", "2024-11-27", "badge10", 2, 0},
+            {"Milestone Master", "Log 100 workouts. Perseverance pays off!", "2024-11-27", "badge11", 2, 0},
+            {"Hall of Fame", "Achieve all achievements. The ultimate fitness legend!", "2024-11-27", "badge12", 2, 0}
         };
     
-        String insertQuery = "INSERT INTO achievement (memberid, title, description, date, badge, difficulty, unlocked) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO achievement (memberid, title, description, dateUnlocked, badge, unlocked) VALUES (?, ?, ?, ?, ?, ?)";
     
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
@@ -265,8 +266,7 @@ public class AchievementDAO {
                 stmt.setString(3, (String) achievement[1]);  // Set the achievement description
                 stmt.setDate(4, java.sql.Date.valueOf((String) achievement[2]));  // Set the achievement date
                 stmt.setString(5, (String) achievement[3]);  // Set the badge reference
-                stmt.setInt(6, (Integer) achievement[4]);  // Set the difficulty
-                stmt.setInt(7, (Integer) achievement[5]);  // Set the unlock status
+                stmt.setInt(6, (Integer) achievement[5]);  // Set the unlock status
     
                 // Execute the insert for each default achievement
                 stmt.addBatch();  // Add the statement to batch

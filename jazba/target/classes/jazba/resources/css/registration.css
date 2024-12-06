@@ -1,0 +1,67 @@
+/* General Background Style */
+.background {
+    -fx-background-color: linear-gradient(to bottom, #212121, #0f0f0f);
+}
+
+/* Title Label */
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.profile-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #cccccc;
+    -fx-padding: 10px 0;
+}
+
+/* Field Labels */
+.field-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #dddddd;
+}
+
+/* Input Fields */
+.input-field {
+    -fx-background-color: #444444;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #aaaaaa;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 5;
+}
+
+/* Buttons */
+.submit-button {
+    -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+.submit-button:hover {
+    -fx-background-color: linear-gradient(to right, #2575fc, #6a11cb);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.back-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #6a11cb;
+    -fx-border-width: 2px;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+}
+
+.back-button:hover {
+    -fx-background-color: #333333;
+    -fx-border-color: #2575fc;
+}

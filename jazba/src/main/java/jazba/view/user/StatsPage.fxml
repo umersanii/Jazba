@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragEntered="#addHoverEffect" onMouseDragExited="#addHoverEffect" prefHeight="689.0" prefWidth="1308.0" styleClass="main-scene" stylesheets="@application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.user.StatsPageController">
+
+   <children>
+      <!-- Header Section -->
+      <HBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;">
+         <children>
+            <HBox prefHeight="152.0" prefWidth="1308.0" style="-fx-alignment: center;">
+               <children>
+                  <HBox prefHeight="130.0" prefWidth="215.0" styleClass="container-default">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="120.0" prefWidth="197.0" styleClass="header-label" text="Jazba" />
+                        <ImageView fitHeight="100.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+            </HBox>
+                  <Region prefHeight="130.0" prefWidth="68.0" />
+                  <Button fx:id="overviewButton" alignment="CENTER" mnemonicParsing="false" onAction="#navigateToOverview" prefHeight="40.0" prefWidth="130.0" styleClass="nav-button" text="Overview" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="logsButton" mnemonicParsing="false" onAction="#navigateToLogs" prefHeight="40.0" prefWidth="150.0" styleClass="nav-button" text="Logs" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="achievementsButton" mnemonicParsing="false" onAction="#navigateToCreate" prefHeight="40.0" prefWidth="150.0" styleClass="nav-button" text="Create" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="statsButton" mnemonicParsing="false" onAction="#navigateToStatsPage" prefHeight="40.0" prefWidth="130.0" styleClass="nav-button" text="Stats" />
+                  <Region prefHeight="130.0" prefWidth="200.0" />
+                  <Label fx:id="notificationBell" alignment="CENTER" onMouseClicked="#showNotifications" prefHeight="62.0" prefWidth="74.0" styleClass="notification-bell" text="🔔" />
+                  <VBox prefHeight="110.0" prefWidth="103.0">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="userLabel" onMouseClicked="#showUserMenu" prefHeight="45.0" prefWidth="103.0" styleClass="user-label" text="Name ▼" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+
+      
+
+      <!-- Main Scroll Pane -->
+<ScrollPane fitToWidth="true" layoutX="0.0" layoutY="125.0" pannable="true" prefHeight="568.0" prefWidth="1308.0" style="-fx-background-color: black;">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1049.0" prefWidth="1293.0" style="-fx-background-color: black;">
+         <children>
+            <VBox fx:id="statsContainer" layoutX="6.0" layoutY="5.0" prefWidth="1287.0" spacing="20.0" styleClass="stats-container">
+               <children>
+                  <!-- Top Stats Row -->
+                  <HBox fx:id="topStatsRow" prefHeight="137.0" prefWidth="1308.0" spacing="15.0" styleClass="top-stats-row">
+                     <children>
+                        <!-- Stat Boxes -->
+                        <VBox fx:id="repsVBox" prefHeight="151.0" prefWidth="265.0" styleClass="stat-box">
+                           <children>
+                              <Label fx:id="repsLabel" prefHeight="41.0" prefWidth="261.0" styleClass="label-bold" text="Total Reps Count" />
+                              <Label fx:id="repsValue" alignment="CENTER" prefHeight="105.0" prefWidth="261.0" styleClass="stat-value" text="0" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="setsVBox" prefHeight="151.0" prefWidth="265.0" styleClass="stat-box">
+                           <children>
+                              <Label fx:id="setsLabel" prefHeight="41.0" prefWidth="261.0" styleClass="label-bold" text="Total Sets Count" />
+                              <Label fx:id="setsValue" alignment="CENTER" prefHeight="105.0" prefWidth="261.0" styleClass="stat-value" text="0" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="weightVBox" prefHeight="151.0" prefWidth="265.0" styleClass="stat-box">
+                           <children>
+                              <Label fx:id="weightLabel" prefHeight="41.0" prefWidth="261.0" styleClass="label-bold" text="Total Weight Lifted" />
+                              <Label fx:id="weightValue" alignment="CENTER" prefHeight="105.0" prefWidth="261.0" styleClass="stat-value" text="0" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="pieChartVBox" prefHeight="151.0" prefWidth="265.0" styleClass="stat-box">
+                           <children>
+                              <Label styleClass="label-bold" text="Favourite Exercises" />
+                              <PieChart fx:id="pieChart" styleClass="pie-chart" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="DaysloggedIn" prefHeight="151.0" prefWidth="265.0" styleClass="stat-box">
+                           <children>
+                              <Label fx:id="DaysloggedInLabel" prefHeight="41.0" prefWidth="261.0" styleClass="label-bold" text="Days Logged In" />
+                              <Label fx:id="DaysloggedInValue" alignment="CENTER" prefHeight="105.0" prefWidth="261.0" styleClass="stat-value" text="0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <!-- Charts Row -->
+                  <HBox fx:id="chartsRow" prefHeight="445.0" prefWidth="1308.0" spacing="20.0">
+                     <children>
+                        <!-- Line Chart Section -->
+                        <VBox fx:id="lineChartVBox" prefHeight="387.0" prefWidth="653.0" styleClass="stat-box">
+                           <children>
+                              <HBox fx:id="lineChartHeader" prefHeight="73.0" prefWidth="620.0" styleClass="chart-container">
+                                 <children>
+                                    <Label fx:id="lineChartLabel" alignment="CENTER" prefHeight="55.0" prefWidth="440.0" styleClass="label-bold" text="Line Chart" />
+                                    <ComboBox fx:id="barChartDropdown" prefHeight="29.0" prefWidth="121.0" styleClass="dropdown"/>
+                                 </children>
+                              </HBox>
+                              <StackedBarChart fx:id="stackedBarChart" prefHeight="268.0" prefWidth="626.0" styleClass="stacked-bar-chart">
+                                 <xAxis>
+                                    <CategoryAxis fx:id="stackedBarXAxis" label="Days" prefWidth="565.0" side="BOTTOM" styleClass="stacked-bar-x-axis" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis fx:id="stackedBarYAxis" label="Volume" side="LEFT" styleClass="stacked-bar-y-axis" />
+                                 </yAxis>
+                              </StackedBarChart>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Bar Chart Section -->
+                        <VBox fx:id="barChartVBox" prefHeight="387.0" prefWidth="657.0" styleClass="stat-box">
+                           <children>
+                              <HBox fx:id="barChartHeader" prefHeight="75.0" prefWidth="572.0" styleClass="chart-container">
+                                 <children>
+                                    <Label fx:id="barChartLabel" alignment="CENTER" prefHeight="87.0" prefWidth="440.0" styleClass="label-bold" text="Bar Chart" />
+                                    <ComboBox fx:id="lineChartDropdown" prefHeight="29.0" prefWidth="121.0" styleClass="dropdown"/>
+                                 </children>
+                              </HBox>
+                              <LineChart fx:id="lineChart" prefHeight="267.0" prefWidth="622.0">
+                                 <xAxis>
+                                    <CategoryAxis fx:id="lineChartXAxis" label="Days" styleClass="axis-label" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis fx:id="lineChartYAxis" label="Total Volume" styleClass="axis-label" />
+                                 </yAxis>
+                              </LineChart>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <!-- Save Button -->
+                  <HBox prefHeight="100.0" prefWidth="1308.0" style="-fx-alignment: center;">
+                     <children>
+                        <Button fx:id="shareButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="nav-button" text="Save" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
+
+   </children>
+</AnchorPane>

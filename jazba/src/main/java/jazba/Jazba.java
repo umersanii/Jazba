@@ -21,19 +21,13 @@ public class Jazba extends Application {
             Connection conn = DB.connectToDB();
             DB.createDBAndTables(); // Create the database and tables if they don't exist
             if (conn != null) {
-                // Proceed with the application if the connection is successful
-                java.net.URL resource = getClass().getResource("resources/registration.css");
-                if (resource != null) {
-                    System.out.println("FXML file found: " + resource.toExternalForm());
-                } else {
-                    System.out.println("FXML file not found. Check the path!");
-                }
-                System.out.println("Looking for FXML file at: " + getClass().getResource("MainScene.fxml"));
 
-                Parent root = FXMLLoader.load(getClass().getResource("view/Registration.fxml"));
-                SceneManager.setStage(primaryStage); // Set stage for SceneManager
+                Parent root = FXMLLoader.load(getClass().getResource("view/Login.fxml"));
+                SceneManager.setStage(primaryStage); 
                 primaryStage.setScene(new Scene(root));
-                primaryStage.setTitle("Fitness Tracker App");
+                primaryStage.setTitle("Jazba");
+                primaryStage.setResizable(false); 
+                primaryStage.setMaximized(false); 
                 primaryStage.show();
             } else {
                 System.out.println("Database connection failed. Application will not start.");

@@ -1,0 +1,426 @@
+/* Main Scene Styles */
+.root{
+	-fx-background-color: #000000;
+}
+
+.main-scene {
+    -fx-background-color: #f4f4f4; /* Set the background color for the main scene */
+}
+
+/* Header Box */
+.header-box {
+    -fx-background-color: #2c3e50; /* Dark background for the header */
+    -fx-padding: 10px;
+}
+
+/* Header Label */
+.header-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Logo Container */
+.logo-container {
+    -fx-padding: 10px;
+}
+
+/* Navbar Styling */
+.navbar {
+    -fx-background-color: #2c3e50; /* Dark background for the navbar */
+    -fx-padding: 10px;
+}
+
+.navbar-item {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+}
+
+.navbar-item:hover {
+    -fx-background-color: #34495e; /* Darker shade on hover */
+}
+
+.navbar-item.selected {
+    -fx-background-color: #fae208; /* Highlight selected item with yellow */
+    -fx-text-fill: black;
+}
+
+/* Navigation Button Styling */
+.nav-button {
+    -fx-background-color: #222422; /* Greenish background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25px; /* Half of button width/height to make it circular */
+    -fx-alignment: center; /* Center the text inside the button */
+    -fx-padding: 0px; /* Remove padding to make it a full circle */
+
+    -fx-pref-width: 150px;
+    -fx-pref-height: 60px;
+
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Hover Effect for Navigation Buttons */
+.nav-button:hover {
+    -fx-background-color: #646769; /* Darker blue for hover effect */
+}
+
+/* User Label */
+.user-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ecf0f1; /* Light text for user label */
+    -fx-padding: 10px;
+}
+
+.main-scoll-pane
+{
+    -fx-background-color: #000000;
+}
+/* Notification Bell */
+.notification-bell {
+    -fx-font-size: 25px;
+    -fx-text-fill: #e74c3c; /* Red color for bell icon */
+    -fx-padding: 10px;
+}
+
+.notification-bell:hover {
+    -fx-font-size: 35px;
+    -fx-text-fill: #e74c3c; /* Red color for bell icon */
+    -fx-padding: 10px;
+}
+
+/* Workout Button Container */
+.workout-button-container {
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
+}
+
+/* Workout Button Styling */
+.stats-button {
+    -fx-background-color: #222422; /* Greenish background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25px; /* Half of button width/height to make it circular */
+    -fx-alignment: center; /* Center the text inside the button */
+    -fx-padding: 10px; /* Remove padding to make it a full circle */
+    
+    /* Set equal width and height for circular shape */
+    -fx-pref-width: 470px;
+    -fx-pref-height: 520px;
+
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.stat-box{
+    -fx-background-color: #353333;
+    -fx-padding: 10px;
+    -fx-background-radius: 25px; /* Half of button width/height to make it circular */
+    -fx-border-radius: 25px; /* Half of button width/height to make it circular */
+
+}
+
+.chart-legend {
+    -fx-background-color:  transparent;
+ }
+
+ .chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.label-bold{
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #faf9f2;
+}
+.chart
+{
+    -fx-background-color: #504d4d;
+    -fx-text-fill: #e7e7f5;
+}
+.axis-label {
+    -fx-text-fill: #ffb108;
+  }
+.pie-chart{
+    -fx-background-color: transparent;
+
+
+
+}
+
+.stat-box:hover{
+    -fx-background-color: #363535;
+}
+
+.button-default{
+    -fx-background-color: #363535;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-radius: 25px; /* Half of button width/height to make it circular */
+    -fx-border-radius: 25px; 
+
+
+}
+
+.txt-field{
+    -fx-background-color: #363535;
+    -fx-border-radius: 25px; /* Half of button width/height to make it circular */
+    -fx-border-color: #646161;
+    -fx-background-radius: 25px;
+    -fx-text-fill: white;
+
+
+
+}
+
+.stat-value{
+    -fx-font-size: 24px;
+    -fx-text-fill: #fae208;
+}
+
+.list-default{
+    -fx-background-color: #363535;
+    -fx-border-radius: 25px; /* Half of button width/height to make it circular */
+    -fx-border-color: #646161;
+    -fx-background-radius: 25px;
+
+
+}
+/* Workout Button Styling */
+.achievements-button {
+    -fx-background-color: #222422; /* Greenish background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25px; /* Half of button width/height to make it circular */
+
+    /* Set equal width and height for circular shape */
+    -fx-pref-width: 470px;
+    -fx-pref-height: 520px;
+}
+
+.workout-button {
+    -fx-background-color: #222422; /* Greenish background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25px; /* Half of button width/height to make it circular */
+    -fx-padding: 10px; /* Remove padding to make it a full circle */
+    
+    /* Set equal width and height for circular shape */
+    -fx-pref-width: 350px;
+    -fx-pref-height: 270px;
+
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.container-default {
+    -fx-background-color: #000000;
+    -fx-alignment: center; /* Center the text inside the button */
+    -fx-padding: 10px;
+}
+
+
+/* Hover Effect for Workout Buttons */
+.stats-button:hover {
+    -fx-background-color: #424444; /* Lighter green for hover effect */
+}
+
+.workout-button:hover {
+    -fx-background-color: #424444; /* Lighter green for hover effect */
+}
+
+.user-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ecf0f1; /* Light text for user label */
+    -fx-padding: 10px;
+}
+
+/* Chart Container */
+.chart-container {
+    -fx-background-color: transparent; /* Light background for chart section */
+    -fx-padding: 10px;
+    -fx-border-radius: 10px;
+}
+
+.dropdown
+{
+    -fx-background-color: #504d4d;
+    -fx-text-fill: #e7e7f5;
+    -fx-font-size: 8px;
+    -fx-background-radius: 12px; /* Half of button width/height to make it circular */
+    -fx-border-radius: 12px; /* Half of button width/height to make it circular */
+    -fx-border-color: #f5ecec;
+    -fx-padding: 10px;
+}
+.contain
+/* Achievements Container */
+.achievements-container {
+    -fx-padding: 10px;
+    -fx-border-radius: 10px;
+}
+
+.achievements-label {
+    -fx-font-size: 24px;
+    -fx-text-fill: #fae208; /* Light text for user label */
+    -fx-padding: 10px;
+    -fx-font-weight: bold;
+}
+
+.acv{
+    -fx-font-size: 24px;
+    -fx-text-fill: #fae208; /* Light text for user label */
+    -fx-padding: 10px;
+    -fx-font-weight: bold;
+}
+
+/* Badge Image Styling */
+.image-badge {
+    -fx-fit-width: 48px;
+    -fx-fit-height: 48px;
+}
+
+/* Badge Image Hover Effects */
+.image-badge:hover {
+    -fx-opacity: 0.8; /* Slight opacity change on hover */
+}
+
+/* Badge Image Container (HBox for alignment) */
+.badge-row {
+    -fx-alignment: center; /* Center the text inside the button */
+}
+
+/* Adjusting the margins for badges */
+.badge-container {
+    -fx-padding: 10px;
+}
+
+.chart-container{
+    -fx-background-color: transparent;
+}
+
+/* Footer Styling */
+.footer-box {
+    -fx-background-color: #2c3e50; /* Dark background for footer */
+    -fx-padding: 15px;
+    -fx-alignment: center; /* Center align content in the footer */
+}
+
+.footer-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ecf0f1; /* Light text for footer */
+}
+
+/* Card Component */
+.card {
+    -fx-background-color: #333131;
+    -fx-border-radius: 10px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 0, 2);
+}
+
+.card-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 10px 0;
+}
+
+.card-content {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ecf0f1;
+}
+
+/* Input Field Styling */
+.input-field {
+    -fx-background-color: #1c1d1d;
+    -fx-text-fill: white;
+    -fx-border-color: #646769;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.input-field:focused {
+    -fx-border-color: #fae208; /* Highlighted border color */
+    -fx-background-color: #2c2c2c;
+}
+
+/* Button Groups */
+.button-group {
+    -fx-spacing: 10px; /* Spacing between buttons in a group */
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+/* Modal Dialog */
+.modal-dialog {
+    -fx-background-color: #222222;
+    -fx-border-radius: 10px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 15, 0.5, 0, 3);
+}
+
+.modal-header {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ecf0f1;
+    -fx-padding: 0 0 10px 0;
+}
+
+.modal-body {
+    -fx-font-size: 14px;
+    -fx-text-fill: #b2bec3;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-indeterminate: true;
+    -fx-border-color: #fae208;
+}
+
+.main-scoll-pane
+{
+    -fx-control-inner-background: #333333;
+    -fx-background-color: #333131;
+
+
+}
+/* Scroll Pane Styling */
+.scroll-pane {
+    -fx-background-color: #1c1d1d;
+    -fx-padding: 10px;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: #333131;
+}
+
+/* Style the ScrollPane */
+.main-scroll-pane {
+    -fx-background-color: #333333;
+    -fx-background: #333333;
+}
+
+.container2
+{
+    -fx-background-color: transparent;
+    -fx-alignment:center;
+
+}
+
+.containersomething
+{
+    -fx-background-color: #333131;
+    -fx-padding: 7px;
+
+}
+/* Style the viewport (scrollable area) */
+.main-scroll-pane .viewport {
+    -fx-background-color: #333333;
+}

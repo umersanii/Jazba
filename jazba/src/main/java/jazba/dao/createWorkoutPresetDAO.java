@@ -93,7 +93,7 @@ public class createWorkoutPresetDAO {
             stmtInsertExercise.setString(3, targetMuscles);   // Muscle Groups
             stmtInsertExercise.setString(4, description);     // Exercise Description
             stmtInsertExercise.setString(5, "N/A");           // Equipment (Placeholder, you can update this as needed)
-            stmtInsertExercise.setInt(6, 1);                   // Difficulty (Placeholder, update accordingly)
+            stmtInsertExercise.setInt(6, 0);                   // Difficulty (Placeholder, update accordingly)
             stmtInsertExercise.setString(7, "No instructions"); // Instructions (Placeholder)
             stmtInsertExercise.setInt(8, sets);                // Sets
             stmtInsertExercise.setInt(9, reps);                // Reps

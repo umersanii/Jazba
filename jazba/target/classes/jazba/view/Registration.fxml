@@ -10,7 +10,7 @@
 <?import javafx.geometry.Pos?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" styleClass="background" stylesheets="@../resources/registration.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" styleClass="background" stylesheets="@../resources/css/registration.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.misc.RegistrationController">
    <children>
       <!-- Main container: VBox for centering everything vertically and horizontally -->
       <VBox alignment="CENTER" spacing="20.0" layoutX="0.0" layoutY="0.0" prefWidth="1300.0" prefHeight="700.0">
@@ -21,6 +21,11 @@
          <HBox spacing="10.0" alignment="CENTER">
             <Label text="Username" textFill="white" styleClass="field-label" />
             <TextField fx:id="usernameField" prefWidth="300.0" styleClass="input-field" promptText="Enter your username" />
+         </HBox>
+
+         <HBox spacing="10.0" alignment="CENTER">
+            <Label text="Full Name" textFill="white" styleClass="field-label" />
+            <TextField fx:id="name" prefWidth="300.0" styleClass="input-field" promptText="Enter your Full Name" />
          </HBox>
 
          <!-- Email -->

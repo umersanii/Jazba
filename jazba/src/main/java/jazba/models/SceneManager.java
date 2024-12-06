@@ -1,4 +1,4 @@
-package jazba.models;
+    package jazba.models;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

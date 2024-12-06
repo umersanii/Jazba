@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="1308.0" styleClass="main-scene" stylesheets="@application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jazba.controller.user.LogWorkoutController">
+
+   <children>
+      <!-- Header Section -->
+      <HBox alignment="CENTER_LEFT" prefHeight="130.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;">
+         <children>
+            <HBox prefHeight="130.0" prefWidth="1310.0" style="-fx-alignment: center;">
+               <children>
+                  <HBox prefHeight="130.0" prefWidth="215.0" styleClass="container-default">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="120.0" prefWidth="197.0" styleClass="header-label" text="Jazba" />
+                        <ImageView fitHeight="100.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+            </HBox>
+                  <Region prefHeight="130.0" prefWidth="68.0" />
+                  <Button fx:id="overviewButton" alignment="CENTER" mnemonicParsing="false" onAction="#navigateToOverview" prefHeight="40.0" prefWidth="130.0" styleClass="nav-button" text="Overview" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="logsButton" mnemonicParsing="false" onAction="#navigateToLogs" prefHeight="40.0" prefWidth="150.0" styleClass="nav-button" text="Logs" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="achievementsButton" mnemonicParsing="false" onAction="#navigateToCreate" prefHeight="40.0" prefWidth="150.0" styleClass="nav-button" text="Create" />
+                  <Region prefHeight="130.0" prefWidth="18.0" />
+                  <Button fx:id="statsButton" mnemonicParsing="false" onAction="#navigateToStatsPage" prefHeight="40.0" prefWidth="130.0" styleClass="nav-button" text="Stats" />
+                  <Region prefHeight="130.0" prefWidth="200.0" />
+                  <Label fx:id="notificationBell" alignment="CENTER" onMouseClicked="#showNotifications" prefHeight="62.0" prefWidth="74.0" styleClass="notification-bell" text="🔔" />
+                  <VBox prefHeight="110.0" prefWidth="103.0">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="userLabel" onMouseClicked="#showUserMenu" prefHeight="45.0" prefWidth="103.0" styleClass="user-label" text="Name ▼" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+
+
+      
+
+
+        <!-- Main Content -->
+        <VBox alignment="TOP_CENTER" layoutY="130.0" prefHeight="956.0" prefWidth="1308.0" spacing="20.0" styleClass="container-default">
+            <children>
+                <!-- Custom Workouts & Jazba Workouts Section -->
+                <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1308.0" spacing="20.0" style="-fx-background-color: black;">
+                    <children>
+                        <Button fx:id="SystemGenerateWorkouts" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #212121; -fx-background-radius: 20; -fx-text-fill: white; -fx-border-color: transparent; -fx-font-size: 14px;" styleClass="stats-button" text="Custom Workouts" />
+                        <Button fx:id="UserGeneratedWorkouts" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #212121; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-color: transparent; -fx-font-size: 14px;" styleClass="stats-button" text="Jazba Workouts" />
+                    </children>
+                </HBox>
+
+                <!-- ScrollPane for displaying workout details -->
+                <ScrollPane fx:id="workoutListScrollPane" fitToWidth="true" prefHeight="587.0" prefWidth="1266.0">
+                    <content>
+                        <VBox fx:id="workoutList" prefHeight="98.0" prefWidth="1367.0" spacing="20.0" style="-fx-padding: 10;">
+                            <!-- Example Workout Structure -->
+                            <VBox spacing="10.0" style="-fx-background-color: #212121; -fx-background-radius: 10; -fx-padding: 15;">
+                                <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Click on the Button to get Workout Presets" />
+                                <VBox spacing="5.0" style="-fx-padding-left: 20;">
+                                </VBox>
+                            </VBox>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-alignment: top-center;" styleClass="container2">
+               <children>
+      
+                                        <Button fx:id="saveWorkoutPresetButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #212121; -fx-background-radius: 20; -fx-text-fill: white; -fx-border-color: transparent; -fx-font-size: 14px;" text="Save Workout" />
+               </children>
+            </VBox>
+            <Region prefHeight="200.0" prefWidth="200.0" />
+
+                <!-- Add New Exercise Section -->
+                <HBox spacing="10.0" style="-fx-padding: 10;">
+                    <TextField fx:id="workoutNameField" prefWidth="200.0" promptText="Workout Preset Name" />
+                    <TextField fx:id="exerciseNameField" prefWidth="200.0" promptText="Exercise Name" />
+                    <TextField fx:id="setsField" prefWidth="100.0" promptText="Sets" />
+                    <TextField fx:id="repsField" prefWidth="100.0" promptText="Reps" />
+                    <TextField fx:id="weightField" prefWidth="100.0" promptText="Weight (kg)" />
+                    <Button fx:id="addExerciseButton" style="-fx-background-color: #FF0000; -fx-font-size: 16px; -fx-text-fill: white;" text="Add Exercise" />
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

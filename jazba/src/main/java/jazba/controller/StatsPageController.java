@@ -95,11 +95,11 @@ public class StatsPageController {
     private ObservableList<PieChart.Data> pieData;
 
     private StatsDAO statsDAO;
-    private int loggedInMemberID = 2;
+    private int loggedInMemberID = 1;
 
     public StatsPageController() {
         statsDAO = new StatsDAO();
-        loggedInMemberID = 2;
+        loggedInMemberID = 1;
     }
 
     @FXML
