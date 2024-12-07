@@ -24,10 +24,6 @@ public class UserSession {
         return premiumMember;
     }
 
-    public static String returnUsername()
-    {
-        
-    }
     
 }
 
