@@ -139,7 +139,7 @@ com.jazba
 
 | **Stats GUI Screen** | **User Dashboard GUI Screen** |
 |----------------------|-----------------------|
-| ![Input GUI](screenshots/Stats.jpg) | ![Output GUI](screenshots/Dashboard.png) |
+| ![Input GUI](Screenshots/Stats.jpg) | ![Output GUI](Screenshots/Dashboard.png) |
 
 ### Installation
 1. Clone the repository:
