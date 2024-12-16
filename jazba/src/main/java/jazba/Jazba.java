@@ -17,7 +17,7 @@ public class Jazba extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            // Connect to the database
+            // Connect to the database  
             Connection conn = DB.connectToDB();
             DB.createDBAndTables(); // Create the database and tables if they don't exist
             if (conn != null) {

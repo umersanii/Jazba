@@ -135,6 +135,12 @@ com.jazba
 - JavaFX
 - Database setup (e.g., MySQL or SQLite)
 
+### Screenshots
+
+| **Stats GUI Screen** | **User Dashboard GUI Screen** |
+|----------------------|-----------------------|
+| ![Input GUI](screenshots/Stats.jpg) | ![Output GUI](screenshots/Dashboard.png) |
+
 ### Installation
 1. Clone the repository:
    ```bash
